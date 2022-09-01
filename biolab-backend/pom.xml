@@ -8,11 +8,11 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.pcode.biolab</groupId>
+	<groupId>br.com.pjcode.biolab</groupId>
 	<artifactId>biolab</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>biolab</name>
-	<description>Demo project for Spring Boot</description>
+	<name>biolab-backend</name>
+	<description>Emissão de exames laboratorias.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

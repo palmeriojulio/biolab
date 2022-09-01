@@ -1,10 +1,10 @@
-package br.com.pcode.biolabbackend;
+package br.com.pjcode.biolab;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BiolabApplicationTests {
+class BiolabBackendApplicationTests {
 
 	@Test
 	void contextLoads() {
