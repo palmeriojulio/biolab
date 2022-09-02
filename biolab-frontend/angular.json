@@ -24,7 +24,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -92,7 +92,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -101,6 +101,6 @@
     }
   },
   "cli": {
-    "analytics": "1ab9f738-3404-4645-8095-cf5fff3d690f"
+    "analytics": "ec32061f-d505-4456-8e9f-fb6535d07558"
   }
 }
