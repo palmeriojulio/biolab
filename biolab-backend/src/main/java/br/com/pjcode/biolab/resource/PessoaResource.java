@@ -24,7 +24,6 @@ import br.com.pjcode.biolab.service.PessoaService;
 @RequestMapping("/biolab")
 public class PessoaResource {
 	
-	// Injeção de dependência
 	final PessoaService pessoaService;
 
 	public PessoaResource(PessoaService pessoaService) {
