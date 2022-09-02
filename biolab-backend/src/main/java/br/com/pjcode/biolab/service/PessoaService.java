@@ -14,21 +14,19 @@ import br.com.pjcode.biolab.dto.PessoaDto;
 @Service
 public class PessoaService {
 	
-	// Injeção de dependência
 	final PessoaRepository pessoaRepository;	
 
 	public PessoaService(PessoaRepository pessoaRepository) {
-		super();
 		this.pessoaRepository = pessoaRepository;
 	}
 	
-	public List<PessoaDto> listAll() {
+	public List<PessoaDto> findAll() {
 		return pessoaRepository.findAll().stream()
 				.map(p -> PessoaDto.fromPessoa(p))
 				.collect(Collectors.toList());
 	}
 	
-	public PessoaDto buscarId(Long id) {
+	public PessoaDto findById(Long id) {
 		var pessoa = pessoaRepository.findById(id);
 		return convertOptionalReturn(pessoa);
 	}

@@ -32,7 +32,7 @@ public class PessoaResource {
 	
 	@GetMapping("/pessoa")
 	public ResponseEntity<Object> getAll() {
-		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.listAll());
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findAll());
 	}
 	
 	@PutMapping("/pessoa")
@@ -48,7 +48,7 @@ public class PessoaResource {
 	@DeleteMapping("/pessoa/{id}")
 	public ResponseEntity<Object> deletarPessoa(
 			@PathVariable(value = "id") Long id) {
-		if(Objects.isNull(pessoaService.buscarId(id))) {
+		if(Objects.isNull(pessoaService.findById(id))) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não encontrada");
 		} else {
 			pessoaService.delete(id);
@@ -59,7 +59,7 @@ public class PessoaResource {
 	@GetMapping("/pessoa/id/{id}")
 	public ResponseEntity<Object> buscarId(
 			@PathVariable(value = "id") Long id) {
-		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.buscarId(id));
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findById(id));
 	}
 	
 	@GetMapping("/pessoa/cpf/{cpf}")
