@@ -1,0 +1,60 @@
+package br.com.pjcode.biolab.dto;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import br.com.pjcode.biolab.constantes.FormaPagamentoEnum;
+import br.com.pjcode.biolab.domain.Exame;
+import br.com.pjcode.biolab.domain.Requisicao;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+public class RequisicaoDto {
+
+	private Long id;
+	
+	private PessoaDto pessoa;
+	
+	private List<ExameDto> exames;
+	
+	private FormaPagamentoEnum formaPagamento;
+	
+	private String nomeMedico;
+	
+	private String crmMedico;
+	
+	private BigDecimal valorTotalRequisicao;
+	
+	private boolean existePessoa;
+	
+	public static Requisicao toRequisicao(RequisicaoDto dto) {
+		return new Requisicao(
+				dto.getId(), 
+				PessoaDto.toPessoa(dto.getPessoa()), 
+				ExameDto.toConvertList(dto.getExames()), 
+				dto.getFormaPagamento(), 
+				dto.getNomeMedico(), 
+				dto.getCrmMedico(), 
+				dto.getValorTotalRequisicao(), 
+				dto.isExistePessoa());
+	}
+	
+	public static RequisicaoDto fromRequisicao(Requisicao entity) {
+		return new RequisicaoDto(
+				entity.getId(), 
+				PessoaDto.fromPessoa(entity.getPessoa()), 
+				ExameDto.fromConvertList(entity.getExames()), 
+				entity.getFormaPagamento(), 
+				entity.getNomeMedico(), 
+				entity.getCrmMedico(), 
+				entity.getValorTotalRequisicao(), 
+				entity.isExistePessoa());
+	}
+
+	
+}

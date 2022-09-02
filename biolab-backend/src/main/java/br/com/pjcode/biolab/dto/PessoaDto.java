@@ -3,10 +3,12 @@ package br.com.pjcode.biolab.dto;
 import java.time.LocalDate;
 
 import br.com.pjcode.biolab.domain.Pessoa;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class PessoaDto {
 
 	private Long id;	
@@ -27,20 +29,29 @@ public class PessoaDto {
 	
 	private String outrasInformacoes;
 	
-	public Pessoa toPessoa() {
-		var pessoa = new Pessoa();
-		
-		pessoa.setId(this.id);
-		pessoa.setNome(this.nome);
-		pessoa.setCpf(this.cpf);
-		pessoa.setRg(this.rg);
-		pessoa.setDataNascimento(this.dataNascimento);
-		pessoa.setTelefone(this.telefone);
-		pessoa.setDiabetico(this.diabetico);
-		pessoa.setMedicamentosQueToma(this.medicamentosQueToma);
-		pessoa.setOutrasInformacoes(this.outrasInformacoes);
-		
-		return pessoa;
+	public static Pessoa toPessoa(PessoaDto dto) {
+		return new Pessoa(
+				dto.getId(), 
+				dto.getNome(), 
+				dto.getCpf(), 
+				dto.getRg(), 
+				dto.getDataNascimento(), 
+				dto.getTelefone(), 
+				dto.getDiabetico(), 
+				dto.getMedicamentosQueToma(), 
+				dto.getOutrasInformacoes());
+	}
+	
+	public static PessoaDto fromPessoa(Pessoa entity) {
+		return new PessoaDto(entity.getId(), 
+				entity.getNome(), 
+				entity.getCpf(), 
+				entity.getRg(), 
+				entity.getDataNascimento(), 
+				entity.getTelefone(), 
+				entity.getDiabetico(), 
+				entity.getMedicamentosQueToma(), 
+				entity.getOutrasInformacoes());
 	}
 
 }
