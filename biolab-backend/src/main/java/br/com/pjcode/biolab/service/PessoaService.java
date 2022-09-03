@@ -47,8 +47,13 @@ public class PessoaService {
 	}
 
 	public PessoaDto save(PessoaDto dto) {
-		var pessoa = pessoaRepository.save(PessoaDto.toPessoa(dto));
-		return convertReturn(pessoa);
+		try {
+			var pessoa = pessoaRepository.save(PessoaDto.toPessoa(dto));
+			return convertReturn(pessoa);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}	
 	
 	private PessoaDto convertReturn(Pessoa pessoa) {

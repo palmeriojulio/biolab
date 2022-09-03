@@ -1,12 +1,9 @@
 package br.com.pjcode.biolab.dto;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import br.com.pjcode.biolab.constantes.FormaPagamentoEnum;
-import br.com.pjcode.biolab.domain.Exame;
 import br.com.pjcode.biolab.domain.Requisicao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

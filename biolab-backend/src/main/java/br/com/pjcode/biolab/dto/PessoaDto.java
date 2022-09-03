@@ -2,6 +2,8 @@ package br.com.pjcode.biolab.dto;
 
 import java.time.LocalDate;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import br.com.pjcode.biolab.domain.Pessoa;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +17,7 @@ public class PessoaDto {
 	
 	private String nome;
 	
+	@CPF
 	private String cpf;
 	
 	private String rg;

@@ -44,12 +44,7 @@ public class ExameService {
 	public ExameDto save(ExameDto dto) throws Exception {
 		try {
 			var exame =  exameRepository.save(ExameDto.toExame(dto));
-			if(Objects.nonNull(exame)) {
-				return ExameDto.fromExame(exame);
-			} else {
-				return null;
-			}
-		
+			return convertReturn(exame);		
 		} catch (RuntimeException e) {
 			throw new Exception(""+e.getMessage());
 		}
