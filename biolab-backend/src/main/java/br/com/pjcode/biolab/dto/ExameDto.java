@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.constraints.NotBlank;
+
 import br.com.pjcode.biolab.domain.Exame;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,9 +16,9 @@ import lombok.Setter;
 public class ExameDto {
 
 	private Long id;
-	
+	@NotBlank(message = "Nome do exame não pode está vazio!")
 	private String nome;
-	
+	@NotBlank(message = "Tipo de exame não pode está vazio!")
 	private String tipo;
 	
 	private BigDecimal valor;

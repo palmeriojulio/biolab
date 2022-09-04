@@ -2,6 +2,10 @@ package br.com.pjcode.biolab.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.br.CPF;
 
 import br.com.pjcode.biolab.domain.Pessoa;
@@ -14,16 +18,15 @@ import lombok.Setter;
 public class PessoaDto {
 
 	private Long id;	
-	
-	private String nome;
-	
-	@CPF
+	@NotBlank(message = "Nome do cliente não pode está vazio!")
+	private String nome;	
+	@CPF(message = "CPF inválido ou vazio!")
 	private String cpf;
 	
 	private String rg;
-	
+	@PastOrPresent(message = "Campo data nascimento inválido!")
 	private LocalDate dataNascimento;
-	
+	@Size(min = 10, max = 11, message = "Telefone deve ter entre 10 e 11 caracteres")
 	private String telefone;
 	
 	private String diabetico;		
