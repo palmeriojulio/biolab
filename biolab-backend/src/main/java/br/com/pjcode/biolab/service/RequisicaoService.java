@@ -56,15 +56,20 @@ public class RequisicaoService {
 	}
 
 	public BigDecimal calcularTotalExame(BigDecimal total, BigDecimal valorExame, String fator) {
-		switch (fator) {
-			case "SOMA":
-				return total.add(valorExame);
-			case "SUBTRACAO":
-				return total.subtract(valorExame);
-			default:
-				break;
+		try {			
+			switch (fator) {
+				case "SOMA":
+					return total.add(valorExame);
+				case "SUBTRACAO":
+					return total.subtract(valorExame);
+				default:
+					break;
+			}
+			return total; 
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
 		}
-		return total; 
 	}
 
 	private RequisicaoDto regraRequisicao(RequisicaoDto dto, Pessoa pessoa, List<Exame> emaxes) {
@@ -81,10 +86,15 @@ public class RequisicaoService {
 	}
 
 	private Pessoa regraPessoa(PessoaDto dto) {
-		if(Objects.isNull(dto.getId())) {
-			return pessoaRepository.save(PessoaDto.toPessoa(dto));
-		} else {
-			return PessoaDto.toPessoa(dto);
+		try {			
+			if(Objects.isNull(dto.getId())) {
+				return pessoaRepository.save(PessoaDto.toPessoa(dto));
+			} else {
+				return PessoaDto.toPessoa(dto);
+			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }

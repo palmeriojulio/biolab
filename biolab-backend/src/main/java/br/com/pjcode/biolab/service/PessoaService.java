@@ -21,29 +21,54 @@ public class PessoaService {
 	}
 	
 	public List<PessoaDto> findAll() {
-		return pessoaRepository.findAll().stream()
-				.map(p -> PessoaDto.fromPessoa(p))
-				.collect(Collectors.toList());
+		try {
+			return pessoaRepository.findAll().stream()
+					.map(p -> PessoaDto.fromPessoa(p))
+					.collect(Collectors.toList());			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public PessoaDto findById(Long id) {
-		var pessoa = pessoaRepository.findById(id);
-		return convertOptionalReturn(pessoa);
-	}
-	
+		try {
+			var pessoa = pessoaRepository.findById(id);
+			return convertOptionalReturn(pessoa);			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}	
 
 	public PessoaDto buscarCpf(String cpf) {
-		var pessoa = pessoaRepository.findByCpf(cpf);
-		return convertReturn(pessoa);
+		try {
+			var pessoa = pessoaRepository.findByCpf(cpf);
+			return convertReturn(pessoa);			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public PessoaDto update(PessoaDto dto) {
+		try {
+			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
 		var pessoa = pessoaRepository.save(PessoaDto.toPessoa(dto));
 		return convertReturn(pessoa);
 	}
 	
 	public void delete(Long id) {
-		pessoaRepository.deleteById(id);
+		try {
+			pessoaRepository.deleteById(id);			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return;
+		}
 	}
 
 	public PessoaDto save(PessoaDto dto) {
@@ -57,17 +82,27 @@ public class PessoaService {
 	}	
 	
 	private PessoaDto convertReturn(Pessoa pessoa) {
-		if(Objects.nonNull(pessoa)) {
-			return PessoaDto.fromPessoa(pessoa);
-		} else {
-			return null;			
+		try {
+			if(Objects.nonNull(pessoa)) {
+				return PessoaDto.fromPessoa(pessoa);
+			} else {
+				return null;			
+			}			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 	
 	private PessoaDto convertOptionalReturn(Optional<Pessoa> pessoa) {
-		if(pessoa.isPresent()) {
-			return PessoaDto.fromPessoa(pessoa.get());
-		} else {
+		try {
+			if(pessoa.isPresent()) {
+				return PessoaDto.fromPessoa(pessoa.get());
+			} else {
+				return null;
+			}			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

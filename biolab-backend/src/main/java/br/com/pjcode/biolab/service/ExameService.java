@@ -21,24 +21,43 @@ public class ExameService {
 	}
 	
 	public List<ExameDto> findAll() {
-		return exameRepository.findAll().stream()
-				.map(p -> ExameDto.fromExame(p))
-				.collect(Collectors.toList());
+		try {
+			return exameRepository.findAll().stream()
+					.map(p -> ExameDto.fromExame(p))
+					.collect(Collectors.toList());			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public ExameDto findById(Long id) {
-		var exame = exameRepository.findById(id);
-		return convertOptionalReturn(exame); 
-			
+		try {
+			var exame = exameRepository.findById(id);
+			return convertOptionalReturn(exame); 			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}			
 	}
 	
 	public ExameDto update(ExameDto dto) {
-		var exame = exameRepository.save(ExameDto.toExame(dto));
-		return convertReturn(exame);
+		try {
+			var exame = exameRepository.save(ExameDto.toExame(dto));
+			return convertReturn(exame);			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}	
 
 	public void delete(Long id) {
-		exameRepository.deleteById(id);
+		try {
+			exameRepository.deleteById(id);			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return;
+		}
 	}
 	
 	public ExameDto save(ExameDto dto) throws Exception {
@@ -51,18 +70,28 @@ public class ExameService {
 	}
 	
 	private ExameDto convertReturn(Exame exame) {
-		if(Objects.nonNull(exame)) {
-			return ExameDto.fromExame(exame);
-		} else {
+		try {
+			if(Objects.nonNull(exame)) {
+				return ExameDto.fromExame(exame);
+			} else {
+				return null;			}
+			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
 	
 	private ExameDto convertOptionalReturn(Optional<Exame> exame) {
-		if(exame.isPresent()) {
-			return ExameDto.fromExame(exame.get());
-		} else {
-			return null;			
+		try {
+			if(exame.isPresent()) {
+				return ExameDto.fromExame(exame.get());
+			} else {
+				return null;			
+			}			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 	
