@@ -1,6 +1,7 @@
 package br.com.pjcode.biolab.domain;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,7 +19,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import br.com.pjcode.biolab.constantes.FormaPagamentoEnum;
 import lombok.AllArgsConstructor;
@@ -47,20 +47,19 @@ public class Requisicao {
 			inverseJoinColumns = {@JoinColumn(name="id_exame")})
 	private List<Exame> exames;
 	
-	@Column(name = "forma_pagamento")
+	@Column(name = "forma_pagamento", length = 20)
 	@Enumerated(EnumType.STRING)
 	private FormaPagamentoEnum formaPagamento;
 	
-	@Column(name = "nome_medico")
+	@Column(name = "nome_medico", length = 80)
 	private String nomeMedico;
 	
-	@Column(name = "crm_medico")
+	@Column(name = "crm_medico", length = 6)
 	private String crmMedico;
 	
 	@Column(name = "valor_total_requisicao")
 	private BigDecimal valorTotalRequisicao;
 	
-	@Transient
-	private boolean existePessoa;
-	
+	@Column(name = "data_criacao_requisicao")
+	private LocalDate dataCriacaoRequisicao;
 }

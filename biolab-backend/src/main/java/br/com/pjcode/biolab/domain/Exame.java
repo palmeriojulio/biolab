@@ -26,10 +26,10 @@ public class Exame {
 	@Column(name = "id_exame")
 	private Long id;
 	
-	@Column(name = "nome")
+	@Column(name = "nome", length = 50)
 	private String nome;
 	
-	@Column(name = "tipo")
+	@Column(name = "tipo", length = 50)
 	private String tipo;
 	
 	@Column(name = "valor")

@@ -29,28 +29,28 @@ public class Pessoa implements Serializable{
 	@Column(name = "id_pessoa")
 	private Long id;
 	
-	@Column(name = "nome")
+	@Column(name = "nome", length = 80)
 	private String nome;
 	
-	@Column(name = "cpf")
+	@Column(name = "cpf", length = 11)
 	private String cpf;
 	
-	@Column(name = "rg")
+	@Column(name = "rg", length = 20)
 	private String rg;
 	
 	@Column(name = "data_nascimento")
 	private LocalDate dataNascimento;
 	
-	@Column(name = "telefone")
+	@Column(name = "telefone", length = 15)
 	private String telefone;
 	
-	@Column(name = "diabetico")
+	@Column(name = "diabetico" , length = 3)
 	private String diabetico;		
 	
-	@Column(name = "medicamentos_que_toma")
+	@Column(name = "medicamentos_que_toma" , length = 20)
 	private String medicamentosQueToma;
 	
-	@Column(name = "outras_informacoes")
+	@Column(name = "outras_informacoes", length = 50)
 	private String outrasInformacoes;
 	
 }

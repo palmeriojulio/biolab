@@ -1,6 +1,7 @@
 package br.com.pjcode.biolab.dto;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.com.pjcode.biolab.constantes.FormaPagamentoEnum;
@@ -27,7 +28,7 @@ public class RequisicaoDto {
 	
 	private BigDecimal valorTotalRequisicao;
 	
-	private boolean existePessoa;
+	private LocalDate dataCriacaoRequisicao;
 	
 	public static Requisicao toRequisicao(RequisicaoDto dto) {
 		return new Requisicao(
@@ -38,7 +39,7 @@ public class RequisicaoDto {
 				dto.getNomeMedico(), 
 				dto.getCrmMedico(), 
 				dto.getValorTotalRequisicao(), 
-				dto.isExistePessoa());
+				dto.getDataCriacaoRequisicao());
 	}
 	
 	public static RequisicaoDto fromRequisicao(Requisicao entity) {
@@ -50,7 +51,7 @@ public class RequisicaoDto {
 				entity.getNomeMedico(), 
 				entity.getCrmMedico(), 
 				entity.getValorTotalRequisicao(), 
-				entity.isExistePessoa());
+				entity.getDataCriacaoRequisicao());
 	}
 
 	

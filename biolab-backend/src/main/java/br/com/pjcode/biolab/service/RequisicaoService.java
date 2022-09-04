@@ -1,6 +1,7 @@
 package br.com.pjcode.biolab.service;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -44,9 +45,14 @@ public class RequisicaoService {
 	}
 	
 	private List<Exame> regraExames(List<ExameDto> exames) {
-		return exames.stream()
-				.map(e -> exameRepository.findById(e.getId()).get())
-				.collect(Collectors.toList());
+		try {
+			return exames.stream()
+					.map(e -> exameRepository.findById(e.getId()).get())
+					.collect(Collectors.toList());			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public BigDecimal calcularTotalExame(BigDecimal total, BigDecimal valorExame, String fator) {
@@ -66,6 +72,7 @@ public class RequisicaoService {
 			var requisicao = RequisicaoDto.toRequisicao(dto);
 			requisicao.setPessoa(pessoa);
 			requisicao.setExames(emaxes);
+			requisicao.setDataCriacaoRequisicao(LocalDate.now());
 			return RequisicaoDto.fromRequisicao(requisicaoRepository.save(requisicao));
 		} catch (RuntimeException e) {
 			e.printStackTrace();
