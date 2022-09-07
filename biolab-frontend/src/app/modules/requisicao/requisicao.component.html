@@ -1,0 +1,20 @@
+<p>Valor: {{valor}}</p>
+
+<table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let exame of exames">
+          <td> {{ exame.id }} </td>
+          <td> {{ exame.nome }} </td>
+          <td> {{ exame.tipo }} </td>
+          <td> {{ exame.valor | currency: 'BRL' }} </td>
+        </tr>
+    </tbody>
+  </table>
