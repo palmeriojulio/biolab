@@ -1,7 +1,9 @@
-import { RequisicaoComponent } from './modules/requisicao/requisicao.component';
-import { NgModule } from '@angular/core';
+import { ExameComponent } from './modules/exame/exame.component';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DefaultComponent } from './layout/default/default.component';
+import { RequisicaoComponent } from './modules/requisicao/requisicao.component';
 
 const routes: Routes = [{
   path: '',
@@ -9,6 +11,9 @@ const routes: Routes = [{
   children:  [{
     path: '',
     component: RequisicaoComponent
+  }, {
+    path: 'exame',
+    component: ExameComponent
   }]
 }];
 
