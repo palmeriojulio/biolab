@@ -1,11 +1,10 @@
-<mat-card>
-  <mat-card-title>Exames cadastrados</mat-card-title>
-</mat-card>
-
-<mat-card-actions class="b-add" align="end">
-  <button mat-stroked-button color="basic">Adicionar novo exame</button>
-</mat-card-actions>
-
+<mat-toolbar class="background-color">
+  <mat-icon class="mat-18">description</mat-icon>
+  <span>Exames cadastrados</span>
+  <span class="example-spacer"></span>
+    <button mat-button (click)="openDialog()">Adiconar Exame</button>
+</mat-toolbar>
+<br>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -36,7 +35,7 @@
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="warn" aria-label="Deletar Exame">
-        <mat-icon>delete</mat-icon>
+        <mat-icon>delete_outline</mat-icon>
       </button>
     </td>
   </ng-container>

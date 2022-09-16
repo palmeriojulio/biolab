@@ -6,7 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
@@ -16,19 +19,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+import { ExameFormComponent } from './../../modules/exame-form/exame-form.component';
 import { ExameComponent } from './../../modules/exame/exame.component';
+import { PessoaComponent } from './../../modules/pessoa/pessoa.component';
 import { RequisicaoComponent } from './../../modules/requisicao/requisicao.component';
 import { DefaultComponent } from './default.component';
-
-
-
 
 
 @NgModule({
   declarations: [
     DefaultComponent,
     RequisicaoComponent,
-    ExameComponent
+    ExameComponent,
+    ExameFormComponent,
+    PessoaComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +51,9 @@ import { DefaultComponent } from './default.component';
     MatToolbarModule,
     MatButtonModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule
 
   ]
 })

@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Adicionar novo exame</h1>
+<form class="normal-form">
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Digite o nome do exame">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo</mat-label>
+      <input matInput placeholder="Digite o tipo do exame">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Valor</mat-label>
+      <input matInput placeholder="Digite o valor do exame">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
+    <button mat-raised-button style="margin-left: 8px;" class="background-color">Salvar</button>
+  </div>
+</form>
+
+
+

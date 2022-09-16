@@ -1,22 +1,25 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button'
-//import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
-//import { MyCustomPaginatorIntl, TableComponent } from './widgets/table/table.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+
+//import { FlexLayoutModule } from '@angular/flex-layout';
+//import { MyCustomPaginatorIntl, TableComponent } from './widgets/table/table.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -36,7 +39,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     //FlexLayoutModule,
     RouterModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   exports: [
     HeaderComponent,

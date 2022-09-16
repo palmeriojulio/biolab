@@ -1,0 +1,48 @@
+<mat-toolbar class="background-color">
+  <mat-icon class="mat-18">supervisor_account</mat-icon>
+  <span>Cadastrar Cliente</span>
+</mat-toolbar>
+<br>
+<mat-card>
+  <form class="normal-form">
+    <div mat-dialog-content>
+      <mat-form-field style="width: 58%; margin-inline-end: 8px;" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Digite o nome do exame">
+      </mat-form-field>
+      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="Digite o tipo do exame">
+      </mat-form-field>
+      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+        <mat-label>RG</mat-label>
+        <input matInput placeholder="Digite o valor do exame">
+      </mat-form-field>
+      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input matInput placeholder="Digite o valor do exame">
+      </mat-form-field>
+      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+        <mat-label>Diabetico</mat-label>
+        <mat-select>
+          <mat-option value="option1">Sim</mat-option>
+          <mat-option value="option3">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field style="width: 58%; margin-inline-end: 8px;" appearance="outline">
+        <mat-label>Medicamentos Que Toma</mat-label>
+        <input matInput placeholder="Medicamentos Que Toma">
+      </mat-form-field>
+      <mat-form-field style="width: 99%; margin-inline-end: 8px;" appearance="outline">
+        <mat-label>Outras Informacoes</mat-label>
+        <textarea matInput placeholder="Digite aqui outras informações..."></textarea>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions [align]="'start'">
+      <button mat-raised-button color="primary" style="margin-left: 8px;"  class="background-color">Salvar</button>
+    </div>
+  </form>
+</mat-card>
+
+
+
