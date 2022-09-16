@@ -18,7 +18,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
-//import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 //import { MyCustomPaginatorIntl, TableComponent } from './widgets/table/table.component';
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    //FlexLayoutModule,
+    FlexLayoutModule,
     RouterModule,
     MatFormFieldModule,
     MatSnackBarModule,
