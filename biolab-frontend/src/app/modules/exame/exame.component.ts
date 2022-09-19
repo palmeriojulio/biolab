@@ -37,7 +37,9 @@ export class ExameComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(ExameFormComponent);
+    this.dialog.open(ExameFormComponent, {
+      width: '400px',
+    });
   }
 
 }
