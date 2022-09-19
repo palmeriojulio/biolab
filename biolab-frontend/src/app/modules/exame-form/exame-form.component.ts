@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exame-form.component.scss']
 })
 export class ExameFormComponent implements OnInit {
+
+  // formCliente: FormGroup;
 
   constructor() { }
 

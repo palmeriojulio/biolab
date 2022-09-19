@@ -1,10 +1,10 @@
 <mat-toolbar class="background-color">
   <mat-icon class="mat-18">description</mat-icon>
   <span>Exames cadastrados</span>
-  <span class="example-spacer"></span>
-    <button mat-button (click)="openDialog()">Adiconar Exame</button>
 </mat-toolbar>
 <br>
+<button mat-raised-button (click)="openDialog()">Adiconar Exame</button>
+<br><br>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -45,8 +45,8 @@
 </table>
 
 <mat-paginator [length]="100"
-              [pageSize]="9"
-              [pageSizeOptions]="[5, 9]"
+              [pageSize]="8"
+              [pageSizeOptions]="[4, 8]"
               aria-label="Selecione a página">
 </mat-paginator>
 

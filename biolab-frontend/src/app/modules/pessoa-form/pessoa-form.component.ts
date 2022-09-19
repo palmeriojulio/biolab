@@ -1,28 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pessoa } from 'src/app/models/pessoa-model';
 import { PessoaService } from 'src/app/services/pessoa.service';
 
-import { PessoaFormComponent } from './../pessoa-form/pessoa-form.component';
-
 @Component({
-  selector: 'app-pessoa',
-  templateUrl: './pessoa.component.html',
-  styleUrls: ['./pessoa.component.scss']
+  selector: 'app-pessoa-form',
+  templateUrl: './pessoa-form.component.html',
+  styleUrls: ['./pessoa-form.component.scss']
 })
+export class PessoaFormComponent implements OnInit {
 
-export class PessoaComponent implements OnInit {
-
-  @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   dataSource!: MatTableDataSource<Pessoa>;
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'editar']
 
   constructor(
     private pessoaService: PessoaService,
-    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +27,6 @@ export class PessoaComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
     })
-  }
-
-  openDialog() {
-    this.dialog.open(PessoaFormComponent)
   }
 
 }

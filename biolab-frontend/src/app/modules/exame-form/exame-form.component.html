@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Adicionar novo exame</h1>
-<form class="normal-form">
+<form class="normal-form" method="post">
   <div mat-dialog-content>
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
@@ -16,7 +16,7 @@
   </div>
   <div mat-dialog-actions [align]="'start'">
     <button mat-raised-button color="warn" mat-dialog-close>Cancelar</button>
-    <button mat-raised-button style="margin-left: 8px;" class="background-color">Salvar</button>
+    <button mat-raised-button style="margin-left: 8px;" class="background-color" type="submit">Salvar</button>
   </div>
 </form>
 

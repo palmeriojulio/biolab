@@ -21,9 +21,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ExameFormComponent } from './../../modules/exame-form/exame-form.component';
 import { ExameComponent } from './../../modules/exame/exame.component';
+import { PessoaFormComponent } from './../../modules/pessoa-form/pessoa-form.component';
 import { PessoaComponent } from './../../modules/pessoa/pessoa.component';
 import { RequisicaoComponent } from './../../modules/requisicao/requisicao.component';
 import { DefaultComponent } from './default.component';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { DefaultComponent } from './default.component';
     RequisicaoComponent,
     ExameComponent,
     ExameFormComponent,
-    PessoaComponent
+    PessoaComponent,
+    PessoaFormComponent
   ],
   imports: [
     CommonModule,

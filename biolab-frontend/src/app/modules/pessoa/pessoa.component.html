@@ -1,48 +1,74 @@
 <mat-toolbar class="background-color">
-  <mat-icon class="mat-18">person_outline</mat-icon>
-  <span>Cadastrar Cliente</span>
+  <mat-icon class="mat-18">description</mat-icon>
+  <span>Clientes cadastrados</span>
 </mat-toolbar>
 <br>
-<mat-card>
-  <form class="normal-form">
-    <div mat-dialog-content>
-      <mat-form-field style="width: 58%; margin-inline-end: 8px;" appearance="outline">
-        <mat-label>Nome</mat-label>
-        <input matInput placeholder="Digite o nome do exame">
-      </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
-        <mat-label>CPF</mat-label>
-        <input matInput placeholder="Digite o tipo do exame">
-      </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
-        <mat-label>RG</mat-label>
-        <input matInput placeholder="Digite o valor do exame">
-      </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
-        <mat-label>Telefone</mat-label>
-        <input matInput placeholder="Digite o valor do exame">
-      </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
-        <mat-label>Diabetico</mat-label>
-        <mat-select>
-          <mat-option value="option1">Sim</mat-option>
-          <mat-option value="option3">Não</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field style="width: 58%; margin-inline-end: 8px;" appearance="outline">
-        <mat-label>Medicamentos Que Toma</mat-label>
-        <input matInput placeholder="Medicamentos Que Toma">
-      </mat-form-field>
-      <mat-form-field style="width: 99%; margin-inline-end: 8px;" appearance="outline">
-        <mat-label>Outras Informacoes</mat-label>
-        <textarea matInput placeholder="Digite aqui outras informações..."></textarea>
-      </mat-form-field>
-    </div>
-    <div mat-dialog-actions [align]="'start'">
-      <button mat-raised-button color="primary" style="margin-left: 8px;"  class="background-color">Salvar</button>
-    </div>
-  </form>
-</mat-card>
+<button mat-raised-button (click)="openDialog()">Adiconar Cliente</button>
+<br><br>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.id }} </td>
+  </ng-container>
 
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.nome }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cpf">
+    <th mat-header-cell *matHeaderCellDef> CPF </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.cpf }} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="rg">
+    <th mat-header-cell *matHeaderCellDef> RG </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.rg }} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="telefone">
+    <th mat-header-cell *matHeaderCellDef> Telefone </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.telefone }} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="diabetico">
+    <th mat-header-cell *matHeaderCellDef> Diabetico </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.diabetico }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="medicamentosQueToma">
+    <th mat-header-cell *matHeaderCellDef> Medicamentos em uso </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.medicamentosQueToma }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="outrasInformacoes">
+    <th mat-header-cell *matHeaderCellDef> Obs: </th>
+    <td mat-cell *matCellDef="let pessoa"> {{ pessoa.outrasInformacoes }} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="editar">
+    <th mat-header-cell *matHeaderCellDef> Editar </th>
+    <td mat-cell *matCellDef="let pessoa">
+      <button mat-icon-button color="primary" aria-label="Editar Exame">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Deletar Exame">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="100"
+              [pageSize]="8"
+              [pageSizeOptions]="[4, 8]"
+              aria-label="Selecione a p�gina">
+</mat-paginator>
+
+</div>
 
