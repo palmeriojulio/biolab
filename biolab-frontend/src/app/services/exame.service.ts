@@ -21,6 +21,7 @@ export class ExameService {
   }
 
   salvarExame(exame: Exame) {
+    console.log(exame)
     return this.http.post(`${this.localUrl}exame`, JSON.stringify(exame));
   }
 

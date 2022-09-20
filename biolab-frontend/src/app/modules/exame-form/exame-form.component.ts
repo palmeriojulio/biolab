@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Exame } from 'src/app/models/exame-model';
+import { ExameService } from 'src/app/services/exame.service';
 
 
 @Component({
@@ -9,12 +11,26 @@ import { FormGroup } from '@angular/forms';
 })
 export class ExameFormComponent implements OnInit {
 
-  // formCliente: FormGroup;
+  formExame!: FormGroup;
 
-  constructor() { }
+  constructor(
+    private exameService: ExameService,
+  ) { }
 
   ngOnInit(): void {
+    this.createForm(new Exame());
   }
 
+  createForm(exame: Exame) {
+    this.formExame = new FormGroup({
+      nome: new FormControl(exame.nome),
+      tipo: new FormControl(exame.tipo),
+      valor: new FormControl(exame.valor)
+    })
+  }
 
+  onSubmit() {
+    this.exameService.salvarExame(this.formExame.value);
+    this.formExame.reset(new Exame());
+  }
 }
