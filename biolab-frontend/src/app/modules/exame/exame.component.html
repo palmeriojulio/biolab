@@ -34,7 +34,8 @@
       <button mat-icon-button color="primary" aria-label="Editar Exame">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" aria-label="Deletar Exame">
+      <button mat-icon-button color="warn" aria-label="Deletar Exame"
+        (click)="deletar(exame.id)">
         <mat-icon>delete_outline</mat-icon>
       </button>
     </td>

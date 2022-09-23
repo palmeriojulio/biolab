@@ -41,7 +41,7 @@ public class ExameResource {
 	}
 	
 	@PostMapping("/exame")
-	public ResponseEntity<Object> salvarPessoa(@RequestBody @Valid ExameDto exame) throws Exception {
+	public ResponseEntity<Object> salvarExame(@RequestBody @Valid ExameDto exame) throws Exception {
 		return ResponseEntity.status(HttpStatus.CREATED).body(exameService.save(exame));
 	}
 	
@@ -52,7 +52,7 @@ public class ExameResource {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Exame não encontrado!");
 		} else {
 			exameService.delete(id);
-			return ResponseEntity.status(HttpStatus.OK).body("Exame Excluído");
+			return ResponseEntity.status(HttpStatus.OK).body("Exame excluído com sucesso!");
 		}
 	}
 }
