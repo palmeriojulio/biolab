@@ -1,3 +1,5 @@
-# biolab
+# Biolab
 
-## Api em Java com Spring, para geração e requisições de exames.
+## Api para geração e requisições de exames.
+
+Tecnologias:
