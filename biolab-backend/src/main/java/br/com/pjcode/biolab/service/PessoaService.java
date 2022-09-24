@@ -41,7 +41,7 @@ public class PessoaService {
 		}
 	}	
 
-	public PessoaDto buscarCpf(String cpf) {
+	public PessoaDto findByCpf(String cpf) {
 		try {
 			var pessoa = pessoaRepository.findByCpf(cpf);
 			return convertReturn(pessoa);			

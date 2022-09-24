@@ -1,23 +1,30 @@
 <p>Valor: {{valor}}</p>
-
 <mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="../../../assets/biolab_logo.png" alt="Photo of a Shiba Inu" style="width: 50%; height: 50%;">
+  <mat-toolbar class="background-color">
+    <mat-icon class="mat-18">description</mat-icon>
+    <span>Requisição</span>
+  </mat-toolbar>
+  <br />
   <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+    <mat-card-title>Pesquise o cliente</mat-card-title>
+    <br />
+    <form [formGroup]="formRequisicao">
+      <mat-form-field appearance="outline">
+        <mat-label>Pesquisar por CPF</mat-label>
+        <input matInput placeholder="Digite o CPF" formControlName="cpf" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+    <div class="example-button-row">
+      <button mat-flat-button class="background-color" (click)="onSubmit()">Pesquisar</button>
+    </div>
+    <mat-divider></mat-divider>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
+
+  <mat-card-content *ngIf="visibleForm">
+    <p>Nome: {{pessoa.id}}</p>
+    <p>Nome: {{pessoa.nome}}</p>
+    <p>Nome: {{pessoa.cpf}}</p>
+  </mat-card-content>
+
 </mat-card>
-
-

@@ -3,22 +3,26 @@
   <div mat-dialog-content>
     <mat-form-field appearance="outline">
       <mat-label>Nome</mat-label>
-      <input matInput placeholder="Digite o nome do exame" formControlName="nome">
+      <input matInput placeholder="Digite o nome do exame" formControlName="nome" />
     </mat-form-field>
-    <mat-form-field appearance="outline" style="width: 49%; margin-right: 3px;">
+    <mat-form-field appearance="outline" style="width: 49%; margin-right: 3px">
       <mat-label>Tipo</mat-label>
-      <input matInput placeholder="Digite o tipo do exame" formControlName="tipo">
+      <input matInput placeholder="Digite o tipo do exame" formControlName="tipo" />
     </mat-form-field>
     <mat-form-field appearance="outline" style="width: 50%">
       <mat-label>Valor</mat-label>
-      <input matInput type="number" placeholder="Digite o valor do exame" formControlName="valor">
+      <input matInput type="number" placeholder="Digite o valor do exame" formControlName="valor" />
     </mat-form-field>
   </div>
 </form>
 <div mat-dialog-actions [align]="'start'">
-  <button mat-raised-button color="warn" (click)="fecharModal('fechar')">Cancelar</button>
-  <button mat-raised-button style="margin-left: 8px;" class="background-color" *ngIf="salvar" (click)="onSubmit()">Salvar</button>
-  <button mat-raised-button style="margin-left: 8px;" class="background-color" *ngIf="!salvar" (click)="onSubmit()">Atualizar</button>
+  <button mat-raised-button color="warn" (click)="fecharModal('fechar')">
+    Cancelar
+  </button>
+  <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="salvar" (click)="onSubmit()">
+    Salvar
+  </button>
+  <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="!salvar" (click)="onSubmit()">
+    Atualizar
+  </button>
 </div>
-
-

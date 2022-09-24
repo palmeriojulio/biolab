@@ -57,18 +57,22 @@ public class PessoaResource {
 	}
 	
 	@GetMapping("/pessoa/id/{id}")
-	public ResponseEntity<Object> buscarId(
+	public ResponseEntity<Object> findById(
 			@PathVariable(value = "id") Long id) {
 		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findById(id));
 	}
 	
 	@GetMapping("/pessoa/cpf/{cpf}")
-	public ResponseEntity<Object> buscarCpf(
+	public ResponseEntity<Object> findByCpf(
 			@PathVariable(value = "cpf") String cpf) {
-		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.buscarCpf(cpf));
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findByCpf(cpf));
 	}
 	
-	
-	
+	@GetMapping("/pessoa/nome/{nome}")
+	public ResponseEntity<Object> findByNome(
+			@PathVariable(value = "nome") String nome) {
+		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findByNome(nome));
+	}
+		
 
 }

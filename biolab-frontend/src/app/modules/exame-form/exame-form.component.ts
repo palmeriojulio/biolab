@@ -14,7 +14,6 @@ import { ExameService } from 'src/app/services/exame.service';
 export class ExameFormComponent implements OnInit {
 
   formExame!: FormGroup;
-  exame: Exame = new Exame();
   durationInSeconds = 5;
   salvar: boolean = true;
 
