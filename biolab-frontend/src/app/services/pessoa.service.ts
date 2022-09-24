@@ -20,4 +20,12 @@ export class PessoaService {
     return this.http.get<Pessoa[]>(`${this.localUrl}pessoa`);
   }
 
+  pesquisarClientePorNome(nome: String) {
+    return this.http.get(`${this.localUrl}pessoa/nome/${nome}`);
+  }
+
+  pesquisarClientePorCPF(cpf: String) {
+    return this.http.get(`${this.localUrl}pessoa/cpf/${cpf}`);
+  }
+
 }
