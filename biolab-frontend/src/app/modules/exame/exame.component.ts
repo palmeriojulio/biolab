@@ -21,6 +21,7 @@ export class ExameComponent implements OnInit {
   paginator!: MatPaginator;
   displayedColumns: string[] = ['id', 'nome', 'tipo', 'valor', 'editar']
   dataSource!: MatTableDataSource<Exame>;
+  exame!: Exame;
 
   durationInSeconds = 5;
 
@@ -41,6 +42,21 @@ export class ExameComponent implements OnInit {
     });
   }
 
+  editar(id: number) {
+    this.exameService.listarById(id).subscribe((res: any) => {
+      this.exame = res;
+      this.openDialog();
+    });
+  }
+
+  deletar(id: number) {
+    this.exameService.deletarExame(id).subscribe((res: any) => {
+    }, (error) => {
+      this.open(error.error.text, 'X');
+      this.listarExames();
+    });
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(ExameFormComponent, {
       width: '400px',
@@ -50,14 +66,6 @@ export class ExameComponent implements OnInit {
       if (result === 'salvando') {
         this.listarExames();
       }
-    });
-  }
-
-  deletar(id: number) {
-    this.exameService.deletarExame(id).subscribe((res: any) => {
-    }, (error) => {
-      this.open(error.error.text, 'X');
-      this.listarExames();
     });
   }
 

@@ -10,6 +10,7 @@ import { Exame } from './../models/exame-model';
   providedIn: 'root'
 })
 export class ExameService {
+  [x: string]: any;
 
   localUrl: string;
 
@@ -17,15 +18,19 @@ export class ExameService {
     this.localUrl = `${API}biolab/`;
   }
 
-  listarTodosExames(): Observable<Exame[]> {
-    return this.http.get<Exame[]>(`${this.localUrl}exame`);
-  }
-
   salvarExame(exame: Exame) {
     return this.http.post(`${this.localUrl}exame`, exame);
   }
 
-  atualizarExame(exame: Exame) {
+  listarTodosExames(): Observable<Exame[]> {
+    return this.http.get<Exame[]>(`${this.localUrl}exame`);
+  }
+
+  listarById(id: number) {
+    return this.http.get(`${this.localUrl}exame/${id}`)
+  }
+
+  editarExame(exame: Exame) {
     return this.http.put(`${this.localUrl}exame`, exame);
   }
 

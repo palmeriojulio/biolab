@@ -45,6 +45,11 @@ public class ExameResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(exameService.save(exame));
 	}
 	
+	@GetMapping("/exame/{id}")
+	public ResponseEntity<Object> getById(@PathVariable(value = "id") Long id) {
+		return ResponseEntity.status(HttpStatus.OK).body(exameService.findById(id));
+	}
+	
 	@DeleteMapping("/exame/{id}")
 	public ResponseEntity<Object> deletarExame(
 			@PathVariable(value = "id") Long id) {

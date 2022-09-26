@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,7 +28,10 @@ import { PessoaComponent } from './../../modules/pessoa/pessoa.component';
 import { RequisicaoComponent } from './../../modules/requisicao/requisicao.component';
 import { DefaultComponent } from './default.component';
 
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
 
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -62,7 +65,12 @@ import { DefaultComponent } from './default.component';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule
-
   ]
+  ,
+  providers: [
+    // ************************************
+    { provide: LOCALE_ID, useValue: 'pt' },
+    // ************************************
+  ],
 })
 export class DefaultModule { }

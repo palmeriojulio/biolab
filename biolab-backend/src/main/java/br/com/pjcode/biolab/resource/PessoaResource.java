@@ -66,13 +66,6 @@ public class PessoaResource {
 	public ResponseEntity<Object> findByCpf(
 			@PathVariable(value = "cpf") String cpf) {
 		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findByCpf(cpf));
-	}
-	
-	@GetMapping("/pessoa/nome/{nome}")
-	public ResponseEntity<Object> findByNome(
-			@PathVariable(value = "nome") String nome) {
-		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findByNome(nome));
-	}
-		
+	}	
 
 }

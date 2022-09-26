@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Exame } from 'src/app/models/exame-model';
 import { ExameService } from 'src/app/services/exame.service';
 
@@ -29,9 +29,9 @@ export class ExameFormComponent implements OnInit {
 
   createForm(exame: Exame) {
     this.formExame = new FormGroup({
-      nome: new FormControl(exame.nome),
-      tipo: new FormControl(exame.tipo),
-      valor: new FormControl(exame.valor)
+      nome: new FormControl(exame.nome, Validators.required),
+      tipo: new FormControl(exame.tipo, Validators.required),
+      valor: new FormControl(exame.valor, Validators.required)
     })
   }
 
