@@ -3,10 +3,10 @@ export class Pessoa {
   nome?: string;
   cpf?: string;
   rg?: string;
+  dataNascimento?: string;
   telefone?: string;
   diabetico?: string;
   medicamentosQueToma?: string;
   outrasInformacoes?: string;
-  dataNascimento?: string;
 
 }

@@ -38,11 +38,16 @@
         <textarea matInput placeholder="Digite aqui outras informações..."></textarea>
       </mat-form-field>
     </div>
-    <div mat-dialog-actions [align]="'start'">
-      <button mat-raised-button color="primary" style="margin-left: 8px;"  class="background-color">Salvar</button>
-    </div>
   </form>
+  <div mat-dialog-actions [align]="'start'">
+    <button mat-raised-button color="warn" (click)="fecharModal('fechar')">
+      Cancelar
+    </button>
+    <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="salvar" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="!salvar" (click)="onSubmit()">
+      Atualizar
+    </button>
+  </div>
 </mat-card>
-
-
-
