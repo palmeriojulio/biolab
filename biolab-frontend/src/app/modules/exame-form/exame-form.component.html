@@ -1,6 +1,6 @@
 <mat-toolbar class="background-color">
-  <mat-icon class="mat-18">person_outline</mat-icon>
-  <span>Adicionar novo exame</span>
+  <mat-icon class="mat-18">description</mat-icon>
+  <span>{{title}}</span>
 </mat-toolbar>
 <br>
 <mat-card>
@@ -21,14 +21,11 @@
     </div>
   </form>
   <div mat-dialog-actions [align]="'start'">
-    <button mat-raised-button color="warn" (click)="fecharModal('fechar')">
+    <button mat-raised-button color="warn" (click)="fecharModal()">
       Cancelar
     </button>
-    <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="salvar" (click)="onSubmit()">
-      Salvar
-    </button>
-    <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="!salvar" (click)="onSubmit()">
-      Atualizar
+    <button mat-raised-button style="margin-left: 8px" class="background-color" (click)="onSubmit()">
+      {{btn}}
     </button>
   </div>
 

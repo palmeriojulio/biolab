@@ -15,7 +15,6 @@ import { PessoaService } from 'src/app/services/pessoa.service';
 export class PessoaFormComponent implements OnInit {
 
   formPessoa!: FormGroup;
-  paginator!: MatPaginator;
   durationInSeconds = 5;
   dataSource!: MatTableDataSource<Pessoa>;
   salvar: boolean = true;
@@ -28,13 +27,6 @@ export class PessoaFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm(new Pessoa());
-  }
-
-  listarPessoas() {
-    this.pessoaService.listarTodasPessoas().subscribe((res: any) => {
-      this.dataSource = new MatTableDataSource(res);
-      this.dataSource.paginator = this.paginator;
-    })
   }
 
   createForm(pessoa: Pessoa) {

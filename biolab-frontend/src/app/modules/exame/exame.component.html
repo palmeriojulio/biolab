@@ -3,7 +3,7 @@
   <span>Exames cadastrados</span>
 </mat-toolbar>
 <br>
-<button mat-raised-button (click)="openDialog()">Adiconar exame</button>
+<button mat-raised-button (click)="openDialog(exame)">Adiconar exame</button>
 <br><br>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -31,7 +31,7 @@
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
       <td mat-cell *matCellDef="let exame">
-        <button mat-icon-button color="primary" aria-label="Editar Exame" (click)="editar(exame.id)">
+        <button mat-icon-button color="primary" aria-label="Editar Exame" (click)="editar(exame)">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button color="warn" aria-label="Deletar Exame" (click)="deletar(exame.id)">
@@ -44,7 +44,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [length]="100" [pageSize]="8" [pageSizeOptions]="[4, 8]" aria-label="Selecione a página">
+  <mat-paginator [length]="100" [pageSize]="8" [pageSizeOptions]="[4, 8]" aria-label="Selecione a pÃ¡gina">
   </mat-paginator>
 
 </div>

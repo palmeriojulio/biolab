@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,13 +16,12 @@ import { ExameFormComponent } from './../exame-form/exame-form.component';
 
 export class ExameComponent implements OnInit {
 
-  //Vari·veis da lista
+  //Vari√°veis da lista
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   displayedColumns: string[] = ['id', 'nome', 'tipo', 'valor', 'editar']
   dataSource!: MatTableDataSource<Exame>;
   exame!: Exame;
-
   durationInSeconds = 5;
 
   constructor(
@@ -42,22 +41,25 @@ export class ExameComponent implements OnInit {
     });
   }
 
-  editar(id: number) {
-    this.exameService.listarById(id).subscribe((res: any) => {
-      this.exame = res;
-      this.openDialog();
+  editar(exame: any) {
+    const dialogRef = this.dialog.open(ExameFormComponent, {
+      width: '400px',
+      data: exame
     });
   }
 
   deletar(id: number) {
-    this.exameService.deletarExame(id).subscribe((res: any) => {
-    }, (error) => {
-      this.open(error.error.text, 'X');
-      this.listarExames();
-    });
+    if (confirm("Deseja realmete excluir o exame!") == true) {
+      this.listarExames;
+      this.exameService.deletarExame(id).subscribe((res: any) => {
+      }, (error) => {
+        alert(error.error.text)
+      });
+    }
+
   }
 
-  openDialog() {
+  openDialog(exame: Exame) {
     const dialogRef = this.dialog.open(ExameFormComponent, {
       width: '400px',
     });

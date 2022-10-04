@@ -57,7 +57,7 @@ public class ExameResource {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Exame não encontrado!");
 		} else {
 			exameService.delete(id);
-			return ResponseEntity.status(HttpStatus.OK).body("Exame excluído com sucesso!");
+			return ResponseEntity.status(HttpStatus.OK).body("Exame excluído!");
 		}
 	}
 }
