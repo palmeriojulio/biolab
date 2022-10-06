@@ -22,7 +22,7 @@ export class ExameFormComponent implements OnInit {
     private exameService: ExameService,
     public dialogRef: MatDialogRef<ExameFormComponent>,
     private snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public editData: any
+    @Inject(MAT_DIALOG_DATA) public exameEdit: Exame
   ) { }
 
   ngOnInit(): void {
@@ -30,17 +30,22 @@ export class ExameFormComponent implements OnInit {
   }
 
   createForm(exame: Exame) {
+
     this.formExame = new FormGroup({
+      id: new FormControl(exame.id, Validators.required),
       nome: new FormControl(exame.nome, Validators.required),
       tipo: new FormControl(exame.tipo, Validators.required),
       valor: new FormControl(exame.valor, Validators.required)
     });
-    if (this.editData) {
+
+    if (this.exameEdit) {
       this.btn = "Editar",
         this.title = "Editar exame",
-        this.formExame.controls['nome'].setValue(this.editData.nome),
-        this.formExame.controls['tipo'].setValue(this.editData.tipo),
-        this.formExame.controls['valor'].setValue(this.editData.valor)
+        this.formExame.controls['id'].setValue(this.exameEdit.id),
+        this.formExame.controls['nome'].setValue(this.exameEdit.nome),
+        this.formExame.controls['tipo'].setValue(this.exameEdit.tipo),
+        this.formExame.controls['valor'].setValue(this.exameEdit.valor)
+
     }
   }
 
@@ -54,25 +59,19 @@ export class ExameFormComponent implements OnInit {
           this.open('Erro ao salvar o exame!', 'X');
         }
         this.fecharModal();
-      });
+      })
       this.formExame.reset(new Exame());
+
     } else {
-      this.editData.valor = this.formExame.value.valor;
-      this.exameService.editarExame(this.editData).subscribe((res: any) => {
+      this.exameService.editarExame(this.formExame.value).subscribe((res: any) => {
         if (res != null) {
-          this.listarExames();
-          this.fecharModal();
           this.open('Exame alterado com sucesso!', 'X');
         } else {
           this.open('Erro ao alterar o exame!', 'X');
         }
-      });
+        this.fecharModal();
+      })
     }
-
-  }
-
-  listarExames() {
-    this.exameService.listarTodosExames();
   }
 
   public fecharModal() {

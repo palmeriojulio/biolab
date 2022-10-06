@@ -6,6 +6,7 @@
 <mat-card>
   <form [formGroup]="formExame">
     <div mat-dialog-content>
+      <input type="hidden" formControlName="id">
       <mat-form-field appearance="outline">
         <mat-label>Nome</mat-label>
         <input matInput placeholder="Digite o nome do exame" formControlName="nome" />

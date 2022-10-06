@@ -50,7 +50,6 @@ export class PessoaComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(PessoaFormComponent, {
-
     });
 
     dialogRef.afterClosed().subscribe(result => {

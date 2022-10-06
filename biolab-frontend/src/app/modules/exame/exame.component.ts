@@ -46,17 +46,20 @@ export class ExameComponent implements OnInit {
       width: '400px',
       data: exame
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.listarExames();
+    });
   }
 
   deletar(id: number) {
-    if (confirm("Deseja realmete excluir o exame!") == true) {
+    if (confirm("Deseja realmete excluir o exame!")) {
       this.listarExames;
       this.exameService.deletarExame(id).subscribe((res: any) => {
       }, (error) => {
         alert(error.error.text)
       });
     }
-
   }
 
   openDialog(exame: Exame) {

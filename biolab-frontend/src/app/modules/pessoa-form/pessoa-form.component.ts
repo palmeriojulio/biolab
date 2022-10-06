@@ -1,7 +1,6 @@
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Pessoa } from 'src/app/models/pessoa-model';
@@ -18,11 +17,14 @@ export class PessoaFormComponent implements OnInit {
   durationInSeconds = 5;
   dataSource!: MatTableDataSource<Pessoa>;
   salvar: boolean = true;
+  btn: string = "Salvar"
+  title: string = "Adicionar cliente"
 
   constructor(
     private pessoaService: PessoaService,
     public dialogRef: MatDialogRef<PessoaFormComponent>,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public editData: any
   ) { }
 
   ngOnInit(): void {
@@ -39,19 +41,40 @@ export class PessoaFormComponent implements OnInit {
       dataNascimento: new FormControl(pessoa.dataNascimento, Validators.required),
       outrasInformacoes: new FormControl(pessoa.outrasInformacoes, Validators.required),
       medicamentosQueToma: new FormControl(pessoa.medicamentosQueToma, Validators.required)
-    })
+    });
+
+    if (this.editData) {
+      this.btn = "Editar"
+      this.title = "Editar cliente"
+      this.formPessoa.controls['nome'].setValue(this.editData.nome),
+        this.formPessoa.controls['cpf'].setValue(this.editData.cpf),
+        this.formPessoa.controls['rg'].setValue(this.editData.rg),
+        this.formPessoa.controls['telefone'].setValue(this.editData.telefone),
+        this.formPessoa.controls['diabetico'].setValue(this.editData.diabetico),
+        this.formPessoa.controls['dataNascimento'].setValue(this.editData.dataNascimento),
+        this.formPessoa.controls['outrasInformacoes'].setValue(this.editData.outrasInformacoes),
+        this.formPessoa.controls['medicamentosQueToma'].setValue(this.editData.medicamentosQueToma)
+    }
   }
 
   onSubmit() {
-    this.pessoaService.salvarPessoa(this.formPessoa.value).subscribe((res: any) => {
-      if (res != null) {
-        this.open('Pessoa salva com sucesso!', 'X');
-      } else {
 
-      }
-      this.fecharModal('salvando');
-    });
-    this.formPessoa.reset(new Pessoa());
+    if (this.btn != "Editar") {
+
+      this.pessoaService.salvarPessoa(this.formPessoa.value).subscribe((res: any) => {
+        if (res != null) {
+          this.open('Cliente salva com sucesso!', 'X');
+        } else {
+          this.open('Erro ao salvar o cliente!', 'X');
+        }
+        this.fecharModal('salvando');
+      });
+      this.formPessoa.reset(new Pessoa());
+
+    } else {
+
+    }
+
   }
 
   public fecharModal(msg: any) {
