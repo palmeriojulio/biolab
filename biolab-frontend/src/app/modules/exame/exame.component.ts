@@ -54,12 +54,12 @@ export class ExameComponent implements OnInit {
 
   deletar(id: number) {
     if (confirm("Deseja realmete excluir o exame!")) {
-      this.listarExames;
       this.exameService.deletarExame(id).subscribe((res: any) => {
       }, (error) => {
         alert(error.error.text)
       });
     }
+    this.listarExames();
   }
 
   openDialog(exame: Exame) {
