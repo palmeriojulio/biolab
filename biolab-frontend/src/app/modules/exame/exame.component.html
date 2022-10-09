@@ -4,9 +4,14 @@
     <mat-icon class="mat-18">description</mat-icon>
     <span>Exames cadastrados</span>
   </mat-toolbar>
-  <br>
+
   <button mat-raised-button (click)="openDialog(exame)">Adiconar exame</button>
-  <br><br>
+
+  <mat-form-field appearance="standard" style="margin-left: 10px; width: 85%;">
+    <input matInput (keyup)="applyFilter($event)" placeholder="digite o nome ou valor do exame" #input>
+    <mat-label>Pesquisar</mat-label>
+  </mat-form-field>
+
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
