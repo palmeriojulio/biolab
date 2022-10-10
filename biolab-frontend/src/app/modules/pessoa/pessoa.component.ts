@@ -20,7 +20,7 @@ export class PessoaComponent implements OnInit {
   paginator!: MatPaginator;
   dataSource!: MatTableDataSource<Pessoa>;
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'editar']
-
+  pessoa!: Pessoa;
   durationInSeconds = 5;
 
   constructor(
@@ -48,8 +48,9 @@ export class PessoaComponent implements OnInit {
     });
   }
 
-  openDialog() {
+  openDialog(pessoa: Pessoa) {
     const dialogRef = this.dialog.open(PessoaFormComponent, {
+      width: '800px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

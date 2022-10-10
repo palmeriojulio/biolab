@@ -5,10 +5,10 @@
     <span>Clientes cadastrados</span>
   </mat-toolbar>
 
-  <button mat-raised-button (click)="openDialog()">Adiconar cliente</button>
+  <button mat-raised-button (click)="openDialog(pessoa)">Adiconar cliente</button>
 
   <mat-form-field appearance="standard" style="margin-left: 10px; width: 85%;">
-    <input matInput (keyup)="applyFilter($event)" placeholder="digite o nome ou valor do exame" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="digite o nome ou cpf do cliente" #input>
     <mat-label>Pesquisar</mat-label>
   </mat-form-field>
 

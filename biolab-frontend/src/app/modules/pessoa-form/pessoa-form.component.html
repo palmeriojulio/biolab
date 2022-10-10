@@ -1,53 +1,58 @@
 <mat-toolbar class="background-color">
   <mat-icon class="mat-18">person_outline</mat-icon>
-  <span>Cadastrar cliente</span>
+  <span>{{title}}</span>
 </mat-toolbar>
 <br>
 <mat-card>
-  <form class="normal-form">
+  <form [formGroup]="formPessoa">
     <div mat-dialog-content>
-      <mat-form-field style="width: 58%; margin-inline-end: 8px;" appearance="outline">
+      <input type="hidden" formControlName="id">
+      <mat-form-field style="width: 46%; margin-inline-end: 8px;" appearance="outline">
         <mat-label>Nome</mat-label>
-        <input matInput placeholder="Digite o nome do exame">
+        <input matInput placeholder="Digite o nome" formControlName="nome">
       </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+      <mat-form-field style="width: 25%; margin-inline-end: 8px;" appearance="outline">
         <mat-label>CPF</mat-label>
-        <input matInput placeholder="Digite o tipo do exame">
+        <input matInput placeholder="Digite o cpf" formControlName="cpf" mask="000.000.000-00">
       </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+      <mat-form-field style="width: 25%; margin-inline-end: 8px;" appearance="outline">
         <mat-label>RG</mat-label>
-        <input matInput placeholder="Digite o valor do exame">
+        <input matInput placeholder="Digite o rg" formControlName="rg" maxlength="20">
       </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+      <mat-form-field appearance="outline" style="width: 25%; margin-inline-end: 8px">
+        <mat-label>Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" mask="00/00/0000" formControlName="dataNascimento">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field style="width: 25%; margin-inline-end: 8px;" appearance="outline">
         <mat-label>Telefone</mat-label>
-        <input matInput placeholder="Digite o valor do exame">
+        <input matInput placeholder="Digite o telefone" formControlName="telefone" mask="(00) 00000-0000">
       </mat-form-field>
-      <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
+      <mat-form-field style="width: 15%; margin-inline-end: 8px;" appearance="outline">
         <mat-label>Diabetico</mat-label>
         <mat-select>
-          <mat-option value="option1">Sim</mat-option>
-          <mat-option value="option3">Não</mat-option>
+          <mat-option value="Sim">Sim</mat-option>
+          <mat-option value="Não">Não</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field style="width: 58%; margin-inline-end: 8px;" appearance="outline">
-        <mat-label>Medicamentos Que Toma</mat-label>
-        <input matInput placeholder="Medicamentos Que Toma">
+      <mat-form-field style="width: 30%; margin-inline-end: 8px;" appearance="outline">
+        <mat-label>Medicamento que toma</mat-label>
+        <input matInput placeholder="Medicamentos Que Toma" formControlName="medicamentosQueToma">
       </mat-form-field>
       <mat-form-field style="width: 99%; margin-inline-end: 8px;" appearance="outline">
         <mat-label>Outras Informacoes</mat-label>
-        <textarea matInput placeholder="Digite aqui outras informações..."></textarea>
+        <textarea matInput placeholder="Digite aqui outras informações..."
+          formControlName="outrasInformacoes"></textarea>
       </mat-form-field>
     </div>
   </form>
   <div mat-dialog-actions [align]="'start'">
-    <button mat-raised-button color="warn" (click)="fecharModal('fechar')">
+    <button mat-raised-button color="warn" (click)="fecharModal()">
       Cancelar
     </button>
-    <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="salvar" (click)="onSubmit()">
-      Salvar
-    </button>
-    <button mat-raised-button style="margin-left: 8px" class="background-color" *ngIf="!salvar" (click)="onSubmit()">
-      Atualizar
+    <button mat-raised-button style="margin-left: 8px" class="background-color" (click)="onSubmit()">
+      {{btn}}
     </button>
   </div>
 </mat-card>

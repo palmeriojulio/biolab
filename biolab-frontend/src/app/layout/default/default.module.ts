@@ -20,6 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ExameFormComponent } from './../../modules/exame-form/exame-form.component';
@@ -62,7 +63,8 @@ registerLocaleData(ptBr);
     MatGridListModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMaskModule.forRoot()
   ]
   ,
   providers: [

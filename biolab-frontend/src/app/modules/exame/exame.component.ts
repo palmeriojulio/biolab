@@ -53,13 +53,14 @@ export class ExameComponent implements OnInit {
   }
 
   deletar(id: number) {
+
     if (confirm("Deseja realmete excluir o exame!")) {
       this.exameService.deletarExame(id).subscribe((res: any) => {
       }, (error) => {
         alert(error.error.text)
+        this.listarExames();
       });
     }
-    this.listarExames();
   }
 
   openDialog(exame: Exame) {
@@ -68,9 +69,7 @@ export class ExameComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'salvando') {
-        this.listarExames();
-      }
+      this.listarExames();
     });
   }
 

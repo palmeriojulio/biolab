@@ -16,7 +16,7 @@ export class ExameFormComponent implements OnInit {
   formExame!: FormGroup;
   durationInSeconds = 5;
   btn: string = "Salvar"
-  title: string = "Adicionar novo exame"
+  title: string = "Adicionar exame"
 
   constructor(
     private exameService: ExameService,

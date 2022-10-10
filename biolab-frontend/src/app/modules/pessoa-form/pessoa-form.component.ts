@@ -15,16 +15,16 @@ export class PessoaFormComponent implements OnInit {
 
   formPessoa!: FormGroup;
   durationInSeconds = 5;
-  dataSource!: MatTableDataSource<Pessoa>;
-  salvar: boolean = true;
   btn: string = "Salvar"
   title: string = "Adicionar cliente"
+
+  cpfmask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 
   constructor(
     private pessoaService: PessoaService,
     public dialogRef: MatDialogRef<PessoaFormComponent>,
     private snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public editData: any
+    @Inject(MAT_DIALOG_DATA) public pessoaEdit: any
   ) { }
 
   ngOnInit(): void {
@@ -33,52 +33,60 @@ export class PessoaFormComponent implements OnInit {
 
   createForm(pessoa: Pessoa) {
     this.formPessoa = new FormGroup({
+      id: new FormControl(pessoa.id, Validators.required),
       nome: new FormControl(pessoa.nome, Validators.required),
       cpf: new FormControl(pessoa.cpf, Validators.required),
-      rg: new FormControl(pessoa.rg, Validators.required),
-      telefone: new FormControl(pessoa.telefone, Validators.required),
-      diabetico: new FormControl(pessoa.diabetico, Validators.required),
-      dataNascimento: new FormControl(pessoa.dataNascimento, Validators.required),
-      outrasInformacoes: new FormControl(pessoa.outrasInformacoes, Validators.required),
-      medicamentosQueToma: new FormControl(pessoa.medicamentosQueToma, Validators.required)
+      rg: new FormControl(pessoa.rg),
+      telefone: new FormControl(pessoa.telefone),
+      diabetico: new FormControl(pessoa.diabetico),
+      dataNascimento: new FormControl(pessoa.dataNascimento),
+      outrasInformacoes: new FormControl(pessoa.outrasInformacoes),
+      medicamentosQueToma: new FormControl(pessoa.medicamentosQueToma)
     });
 
-    if (this.editData) {
+    if (this.pessoaEdit) {
       this.btn = "Editar"
       this.title = "Editar cliente"
-      this.formPessoa.controls['nome'].setValue(this.editData.nome),
-        this.formPessoa.controls['cpf'].setValue(this.editData.cpf),
-        this.formPessoa.controls['rg'].setValue(this.editData.rg),
-        this.formPessoa.controls['telefone'].setValue(this.editData.telefone),
-        this.formPessoa.controls['diabetico'].setValue(this.editData.diabetico),
-        this.formPessoa.controls['dataNascimento'].setValue(this.editData.dataNascimento),
-        this.formPessoa.controls['outrasInformacoes'].setValue(this.editData.outrasInformacoes),
-        this.formPessoa.controls['medicamentosQueToma'].setValue(this.editData.medicamentosQueToma)
+      this.formPessoa.controls['id'].setValue(this.pessoaEdit.id),
+        this.formPessoa.controls['nome'].setValue(this.pessoaEdit.nome),
+        this.formPessoa.controls['cpf'].setValue(this.pessoaEdit.cpf),
+        this.formPessoa.controls['rg'].setValue(this.pessoaEdit.rg),
+        this.formPessoa.controls['telefone'].setValue(this.pessoaEdit.telefone),
+        this.formPessoa.controls['diabetico'].setValue(this.pessoaEdit.diabetico),
+        this.formPessoa.controls['dataNascimento'].setValue(this.pessoaEdit.dataNascimento),
+        this.formPessoa.controls['outrasInformacoes'].setValue(this.pessoaEdit.outrasInformacoes),
+        this.formPessoa.controls['medicamentosQueToma'].setValue(this.pessoaEdit.medicamentosQueToma)
     }
   }
 
   onSubmit() {
-
+    console.log(this.formPessoa.value)
     if (this.btn != "Editar") {
-
       this.pessoaService.salvarPessoa(this.formPessoa.value).subscribe((res: any) => {
         if (res != null) {
           this.open('Cliente salva com sucesso!', 'X');
         } else {
           this.open('Erro ao salvar o cliente!', 'X');
         }
-        this.fecharModal('salvando');
+        this.fecharModal();
       });
       this.formPessoa.reset(new Pessoa());
 
     } else {
-
+      this.pessoaService.deletarPessoa(this.formPessoa.value).subscribe((res: any) => {
+        if (res != null) {
+          this.open('Pessoa salva com sucesso!', 'X');
+        } else {
+          this.open('Erro ao salva a pessoa!', 'X');
+        }
+        this.fecharModal();
+      })
     }
 
   }
 
-  public fecharModal(msg: any) {
-    this.dialogRef.close(msg)
+  public fecharModal() {
+    this.dialogRef.close();
   }
 
   open(message: string, action: string) {
