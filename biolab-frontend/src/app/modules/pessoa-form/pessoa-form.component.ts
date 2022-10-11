@@ -18,8 +18,6 @@ export class PessoaFormComponent implements OnInit {
   btn: string = "Salvar"
   title: string = "Adicionar cliente"
 
-  cpfmask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
-
   constructor(
     private pessoaService: PessoaService,
     public dialogRef: MatDialogRef<PessoaFormComponent>,

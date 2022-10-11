@@ -47,7 +47,6 @@ export class RequisicaoComponent implements OnInit {
 
   createForm(req: Requisicao) {
     this.formRequisicao = new FormGroup({
-      nome: new FormControl(req.pessoa?.nome),
       cpf: new FormControl(req.pessoa?.cpf)
     })
   }
@@ -58,6 +57,7 @@ export class RequisicaoComponent implements OnInit {
         if (res == null) {
           this.open("Cliente não está cadatrado!", "X");
         } else {
+          console.log(res)
           this.pessoa = res;
           this.visibleForm = true;
         }

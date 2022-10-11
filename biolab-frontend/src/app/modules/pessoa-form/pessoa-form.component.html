@@ -21,7 +21,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline" style="width: 25%; margin-inline-end: 8px">
         <mat-label>Nascimento</mat-label>
-        <input matInput [matDatepicker]="picker" mask="00/00/0000" formControlName="dataNascimento">
+        <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -31,7 +31,7 @@
       </mat-form-field>
       <mat-form-field style="width: 15%; margin-inline-end: 8px;" appearance="outline">
         <mat-label>Diabetico</mat-label>
-        <mat-select>
+        <mat-select formControlName="diabetico">
           <mat-option value="Sim">Sim</mat-option>
           <mat-option value="Não">Não</mat-option>
         </mat-select>

@@ -29,6 +29,7 @@ export class PessoaService {
 
   pesquisarClientePorCPF(cpf: String) {
     return this.http.get(`${this.localUrl}pessoa/cpf/${cpf}`);
+    console.log(cpf)
   }
 
   salvarPessoa(pessoa: Pessoa) {
