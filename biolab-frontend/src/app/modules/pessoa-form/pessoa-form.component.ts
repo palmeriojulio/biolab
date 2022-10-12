@@ -22,7 +22,7 @@ export class PessoaFormComponent implements OnInit {
     private pessoaService: PessoaService,
     public dialogRef: MatDialogRef<PessoaFormComponent>,
     private snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public pessoaEdit: any
+    @Inject(MAT_DIALOG_DATA) public pessoaEdit: Pessoa
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +30,7 @@ export class PessoaFormComponent implements OnInit {
   }
 
   createForm(pessoa: Pessoa) {
+
     this.formPessoa = new FormGroup({
       id: new FormControl(pessoa.id, Validators.required),
       nome: new FormControl(pessoa.nome, Validators.required),
@@ -58,7 +59,7 @@ export class PessoaFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formPessoa.value)
+
     if (this.btn != "Editar") {
       this.pessoaService.salvarPessoa(this.formPessoa.value).subscribe((res: any) => {
         if (res != null) {
@@ -71,16 +72,15 @@ export class PessoaFormComponent implements OnInit {
       this.formPessoa.reset(new Pessoa());
 
     } else {
-      this.pessoaService.deletarPessoa(this.formPessoa.value).subscribe((res: any) => {
+      this.pessoaService.editarPessoa(this.formPessoa.value).subscribe((res: any) => {
         if (res != null) {
-          this.open('Pessoa salva com sucesso!', 'X');
+          this.open('Cliente atualizada com sucesso!', 'X');
         } else {
-          this.open('Erro ao salva a pessoa!', 'X');
+          this.open('Erro ao atualizada a pessoa!', 'X');
         }
         this.fecharModal();
       })
     }
-
   }
 
   public fecharModal() {

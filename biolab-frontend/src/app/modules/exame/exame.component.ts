@@ -53,7 +53,6 @@ export class ExameComponent implements OnInit {
   }
 
   deletar(id: number) {
-
     if (confirm("Deseja realmete excluir o exame!")) {
       this.exameService.deletarExame(id).subscribe((res: any) => {
       }, (error) => {

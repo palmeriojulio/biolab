@@ -36,6 +36,10 @@ export class PessoaService {
     return this.http.post(`${this.localUrl}pessoa`, pessoa);
   }
 
+  editarPessoa(pessoa: Pessoa) {
+    return this.http.put(`${this.localUrl}pessoa`, pessoa);
+  }
+
   deletarPessoa(id: number) {
     return this.http.delete(`${this.localUrl}passoa/${id}`);
   }

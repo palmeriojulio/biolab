@@ -58,7 +58,7 @@
       <ng-container matColumnDef="editar">
         <th mat-header-cell *matHeaderCellDef> Editar </th>
         <td mat-cell *matCellDef="let pessoa">
-          <button mat-icon-button color="primary" aria-label="Editar Exame">
+          <button mat-icon-button color="primary" aria-label="Editar Exame" (click)="editar(pessoa)">
             <mat-icon>edit</mat-icon>
           </button>
           <button mat-icon-button color="warn" aria-label="Deletar Exame" (click)="deletar(pessoa.id)">

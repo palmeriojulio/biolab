@@ -40,17 +40,30 @@ export class PessoaComponent implements OnInit {
     })
   }
 
-  deletar(id: number) {
-    this.pessoaService.deletarPessoa(id).subscribe((res: any) => {
-    }, (error) => {
-      this.open(error.error.text, 'X');
+  editar(pessoa: any) {
+    const dialogRef = this.dialog.open(PessoaFormComponent, {
+      width: '800px',
+      data: pessoa
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
       this.listarPessoas();
     });
   }
 
+  deletar(id: number) {
+    if (confirm("Deseja realmete excluir a cliente!")) {
+      this.pessoaService.deletarPessoa(id).subscribe((res: any) => {
+      }, (error) => {
+        alert(error.error.text)
+        this.listarPessoas();
+      });
+    }
+  }
+
   openDialog(pessoa: Pessoa) {
     const dialogRef = this.dialog.open(PessoaFormComponent, {
-      width: '800px',
+      width: '800px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
