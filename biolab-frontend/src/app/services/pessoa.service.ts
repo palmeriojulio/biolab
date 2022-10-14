@@ -29,7 +29,6 @@ export class PessoaService {
 
   pesquisarClientePorCPF(cpf: String) {
     return this.http.get(`${this.localUrl}pessoa/cpf/${cpf}`);
-    console.log(cpf)
   }
 
   salvarPessoa(pessoa: Pessoa) {
@@ -41,6 +40,7 @@ export class PessoaService {
   }
 
   deletarPessoa(id: number) {
+    console.log(id);
     return this.http.delete(`${this.localUrl}passoa/${id}`);
   }
 

@@ -7,6 +7,6 @@ import br.com.pjcode.biolab.domain.Pessoa;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
-
+	
 	Pessoa findByCpf(String cpf);
 }

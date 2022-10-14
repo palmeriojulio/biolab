@@ -51,6 +51,7 @@ public class PessoaResource {
 		if(Objects.isNull(pessoaService.findById(id))) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não encontrada");
 		} else {
+			System.out.println(id);
 			pessoaService.delete(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Pessoa Excluída");
 		}

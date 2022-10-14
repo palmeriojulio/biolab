@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
 import { Pessoa } from 'src/app/models/pessoa-model';
 import { PessoaService } from 'src/app/services/pessoa.service';
 
@@ -74,9 +73,9 @@ export class PessoaFormComponent implements OnInit {
     } else {
       this.pessoaService.editarPessoa(this.formPessoa.value).subscribe((res: any) => {
         if (res != null) {
-          this.open('Cliente atualizada com sucesso!', 'X');
+          this.open('Cliente atualizado com sucesso!', 'X');
         } else {
-          this.open('Erro ao atualizada a pessoa!', 'X');
+          this.open('Erro ao atualizado a pessoa!', 'X');
         }
         this.fecharModal();
       })

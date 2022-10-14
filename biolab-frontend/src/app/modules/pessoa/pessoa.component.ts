@@ -52,7 +52,7 @@ export class PessoaComponent implements OnInit {
   }
 
   deletar(id: number) {
-    if (confirm("Deseja realmete excluir a cliente!")) {
+    if (confirm("Deseja realmete excluir o exame!")) {
       this.pessoaService.deletarPessoa(id).subscribe((res: any) => {
       }, (error) => {
         alert(error.error.text)
