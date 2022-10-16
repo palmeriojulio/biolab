@@ -1,7 +1,7 @@
 import { Exame } from './exame-model';
 import { Pessoa } from './pessoa-model';
 
-export class  Requisicao {
+export class Requisicao {
 
   id?: number;
   pessoa?: Pessoa;

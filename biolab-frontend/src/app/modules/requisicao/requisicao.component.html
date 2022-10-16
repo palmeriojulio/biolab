@@ -5,23 +5,23 @@
   </mat-toolbar>
   <br />
   <mat-card-content>
-    <mat-card-title>Pesquise o cliente</mat-card-title>
+    <mat-card-title>Pesquisar cliente</mat-card-title>
     <br />
-    <form [formGroup]="formRequisicao">
+    <form [formGroup]="formPesq">
       <mat-form-field appearance="outline">
         <mat-label>Pesquisar por CPF</mat-label>
         <input matInput placeholder="Digite o CPF" formControlName="cpf" mask="000.000.000-00" />
-        <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
+      <button mat-icon-button (click)="pesquisar()">
+        <mat-icon>search</mat-icon>
+      </button>
     </form>
-    <div class="example-button-row">
-      <button mat-flat-button class="background-color" (click)="onSubmit()">Pesquisar</button>
-    </div>
     <mat-divider></mat-divider>
   </mat-card-content>
 
   <mat-card-content *ngIf="visibleForm">
-    <mat-card-title>Dados do Paciente</mat-card-title>
+    <mat-card-title>Dados do paciente</mat-card-title>
+    <br />
     <div>
       <h3>
         <span><strong>Nome: </strong> {{pessoa.nome}}</span>
@@ -30,122 +30,50 @@
       </h3>
     </div>
 
-    <form class="normal-form">
+    <form [formGroup]="formRequisicao">
       <div mat-dialog-content>
         <mat-form-field style="width: 30%; margin-inline-end: 8px;" appearance="outline">
           <mat-label>Nome médico</mat-label>
-          <input matInput placeholder="Digite o nome do médico solicitante">
+          <input matInput placeholder="Digite o nome do médico solicitante" formControlName="nomeMedico">
         </mat-form-field>
         <mat-form-field style="width: 15%; margin-inline-end: 8px;" appearance="outline">
           <mat-label>CRM</mat-label>
-          <input matInput placeholder="Digite o CRM do médico">
+          <input matInput placeholder="Digite o CRM do médico" formControlName="crmMedico">
         </mat-form-field>
         <mat-form-field style="width: 15%; margin-inline-end: 8px;" appearance="outline">
-          <mat-label>Diabetico</mat-label>
-          <mat-select>
+          <mat-label>Forma de pagamento</mat-label>
+          <mat-select formControlName="formaPagamento">
             <mat-option value="A_VISTA">A VISTA</mat-option>
             <mat-option value="CARTAO_CREDITO">CREDITO</mat-option>
             <mat-option value="CARTAO_DEBITO">DEBITO</mat-option>
           </mat-select>
         </mat-form-field>
-
-
-
-
+        <input type="hidden" formControlName="valorTotalRequisicao" [value]="valor">
       </div>
 
-      <p>Valor: {{valor}}</p>
+      <mat-divider></mat-divider>
+      <section class="example-section">
+        <h4>Selecione os exemes:</h4>
+        <div *ngFor="let e of exames">
+          <mat-checkbox formArrayName="exames">
+            {{e.nome}} - Valor: {{e.valor}}
+          </mat-checkbox>
+        </div>
+      </section>
+
+
+
+      <!-- <section class="example-section" [formGroup]="toppings">
+        <h4>You chose:</h4>
+        {{toppings.value | json}}
+      </section> -->
     </form>
-
+    <br>
+    <div>
+      <h3><strong>Valor total dos exames:</strong> {{valor}}</h3>
+    </div>
+    <div class="example-button-row">
+      <button mat-flat-button class="background-color" (click)="onSubmit()">Salvar requisição</button>
+    </div>
+    <br>
   </mat-card-content>
-
-
-
-
-  <!--
-  <mat-card-content>
-    <form class="normal-form" *ngIf="visibleForm">
-      <div mat-dialog-content>
-        <mat-form-field style="width: 50%; margin-inline-end: 8px;" appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input matInput placeholder="Digite o nome" [value]="pessoa.nome">
-        </mat-form-field>
-        <mat-form-field style="width: 24%; margin-inline-end: 6px;" appearance="outline">
-          <mat-label>CPF</mat-label>
-          <input matInput placeholder="Digite o CPF" [value]="pessoa.cpf">
-        </mat-form-field>
-        <mat-form-field style="width: 24%; margin-inline-end: 6px;" appearance="outline">
-          <mat-label>RG</mat-label>
-          <input matInput placeholder="Digite o RG" [value]="pessoa.rg">
-        </mat-form-field>
-        <mat-form-field style="width: 20%; margin-inline-end: 8px;" appearance="outline">
-          <mat-label>Data de nascimento</mat-label>
-          <input matInput [matDatepicker]="picker" [value]="pessoa.dataNascimento">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field style="margin-inline-end: 8px;" appearance="outline">
-          <mat-label>Telefone</mat-label>
-          <input matInput placeholder="Digite o telefone" [value]="pessoa.telefone">
-        </mat-form-field>
-        <mat-form-field style="width: 10%; margin-inline-end: 8px;" appearance="outline">
-          <mat-label>Diabetico</mat-label>
-          <mat-select>
-            <mat-option value="option1">Sim</mat-option>
-            <mat-option value="option3">Não</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field style="width: 42%; margin-inline-end: 8px;" appearance="outline">
-          <mat-label>Medicamentos Que Toma</mat-label>
-          <input matInput placeholder="Medicamentos Que Toma" [value]="pessoa.medicamentosQueToma">
-        </mat-form-field>
-        <mat-form-field style="width: 99%; margin-inline-end: 8px;" appearance="outline">
-          <mat-label>Outras Informacoes</mat-label>
-          <textarea matInput placeholder="Digite aqui outras informaações"
-            [value]="pessoa.outrasInformacoes"></textarea>
-        </mat-form-field>
-      </div>
-      <div mat-dialog-actions [align]="'start'">
-        <button mat-raised-button color="primary" style="margin-left: 8px;" class="background-color">Salvar</button>
-      </div>
-    </form>
-  </mat-card-content>
-
-   <mat-card-content>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="visibleForm">
-
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.id }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="nome">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.nome }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="cpf">
-        <th mat-header-cell *matHeaderCellDef> CPF </th>
-        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.cpf }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="telefone">
-        <th mat-header-cell *matHeaderCellDef> Telefone </th>
-        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.telefone }} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="editar">
-        <th mat-header-cell *matHeaderCellDef> Editar </th>
-        <td mat-cell *matCellDef="let pessoa">
-          <button mat-icon-button color="primary" aria-label="Editar pessoa">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  </mat-card-content>
-
-</mat-card> -->

@@ -1,4 +1,5 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Exame } from './../../models/exame-model';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Pessoa } from 'src/app/models/pessoa-model';
@@ -16,12 +17,21 @@ import { RequisicaoService } from './../../services/requisicao.service';
 export class RequisicaoComponent implements OnInit {
 
   valor?: number;
+  formPesq!: FormGroup;
   formRequisicao!: FormGroup;
   visibleForm: boolean = false;
   pessoa!: Pessoa;
+  requisicao!: Requisicao;
+  exames?: Exame[];
   durationInSeconds = 5;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  // exames = [
+  //   { id: 1, select: false, name: "teste 01" },
+  //   { id: 2, select: false, name: "teste 02" },
+  //   { id: 3, select: false, name: "teste 03" },
+  // ]
 
   constructor(
     private requisicaoService: RequisicaoService,
@@ -32,28 +42,45 @@ export class RequisicaoComponent implements OnInit {
 
   ngOnInit(): void {
     this._calcularTotalExame();
-    this.createForm(new Requisicao());
+    this.createFormPesq(new Requisicao());
+    this.createFormRequisicao(new Requisicao());
+    this.listarExames();
   }
 
   _calcularTotalExame() {
-    this.requisicaoService.calcularTotalExame(40, 30, "SUBTRACAO").subscribe((res: any) => {
+    this.requisicaoService.calcularTotalExame(40.50, 30.25, "SUBTRACAO").subscribe((res: any) => {
       this.valor = res;
     });
   }
 
   listarExames() {
-    this.exameService.listarTodosExames();
+    this.exameService.listarTodosExames().subscribe((res: any) => {
+      this.exames = res;
+    });
   }
 
-  createForm(req: Requisicao) {
-    this.formRequisicao = new FormGroup({
+  createFormPesq(req: Requisicao) {
+    this.formPesq = new FormGroup({
       cpf: new FormControl(req.pessoa?.cpf)
     })
   }
 
-  onSubmit() {
-    if (this.formRequisicao.value.cpf) {
-      this.pessoaService.pesquisarClientePorCPF(this.formRequisicao.value.cpf).subscribe((res: any) => {
+  createFormRequisicao(req: Requisicao) {
+    this.formRequisicao = new FormGroup({
+      formaPagamento: new FormControl(req.formaPagamento),
+      nomeMedico: new FormControl(req.nomeMedico),
+      crmMedico: new FormControl(req.crmMedico),
+      valorTotalRequisicao: new FormControl(req.valorTotalRequisicao),
+      dataCriacaoRequisicao: new FormControl(req.dataCriacaoRequisicao),
+      // exames: new FormControl(req.exames)
+      // pessoa?: Pessoa;
+
+    })
+  }
+
+  pesquisar() {
+    if (this.formPesq.value.cpf) {
+      this.pessoaService.pesquisarClientePorCPF(this.formPesq.value.cpf).subscribe((res: any) => {
         if (res == null) {
           this.open("Cliente não está cadatrado!", "X");
         } else {
@@ -65,6 +92,11 @@ export class RequisicaoComponent implements OnInit {
     } else {
       this.open("Campo CPF vazio!", "X")
     }
+  }
+
+  onSubmit() {
+    this.formRequisicao.value.valorTotalRequisicao = this.valor;
+    console.log(this.formRequisicao.value);
   }
 
   // Retornar mensagem depois de salvar
