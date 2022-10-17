@@ -27,12 +27,6 @@ export class RequisicaoComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  // exames = [
-  //   { id: 1, select: false, name: "teste 01" },
-  //   { id: 2, select: false, name: "teste 02" },
-  //   { id: 3, select: false, name: "teste 03" },
-  // ]
-
   constructor(
     private requisicaoService: RequisicaoService,
     private pessoaService: PessoaService,
