@@ -26,6 +26,7 @@ export class RequisicaoComponent implements OnInit {
   durationInSeconds = 5;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
+  exame?: Exame;
 
   constructor(
     private requisicaoService: RequisicaoService,
@@ -35,14 +36,14 @@ export class RequisicaoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._calcularTotalExame();
+    this._calcularTotalExame(40.50, 30.25, "SUBTRACAO");
     this.createFormPesq(new Requisicao());
     this.createFormRequisicao(new Requisicao());
     this.listarExames();
   }
 
-  _calcularTotalExame() {
-    this.requisicaoService.calcularTotalExame(40.50, 30.25, "SUBTRACAO").subscribe((res: any) => {
+  _calcularTotalExame(total: number, valor: number, fator: string) {
+    this.requisicaoService.calcularTotalExame(total, valor, fator).subscribe((res: any) => {
       this.valor = res;
     });
   }
@@ -100,6 +101,11 @@ export class RequisicaoComponent implements OnInit {
       verticalPosition: this.verticalPosition,
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  public obterExame(event: any) {
+    console.log('Evento ' + event.checked);
+    console.log('Exame ' + this.exame);
   }
 
 }
