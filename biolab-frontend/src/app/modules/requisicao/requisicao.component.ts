@@ -8,6 +8,7 @@ import { ExameService } from 'src/app/services/exame.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
 
 import { RequisicaoService } from './../../services/requisicao.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-requisicao',
@@ -16,7 +17,7 @@ import { RequisicaoService } from './../../services/requisicao.service';
 })
 export class RequisicaoComponent implements OnInit {
 
-  valor?: number;
+  valor: number = 0;
   formPesq!: FormGroup;
   formRequisicao!: FormGroup;
   visibleForm: boolean = false;
@@ -26,7 +27,8 @@ export class RequisicaoComponent implements OnInit {
   durationInSeconds = 5;
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  exame?: Exame;
+  fator: string = '';
+  examesSelecionados?: any[]=[];
 
   constructor(
     private requisicaoService: RequisicaoService,
@@ -36,7 +38,7 @@ export class RequisicaoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._calcularTotalExame(40.50, 30.25, "SUBTRACAO");
+    // this._calcularTotalExame(40.50, 30.25, "SUBTRACAO");
     this.createFormPesq(new Requisicao());
     this.createFormRequisicao(new Requisicao());
     this.listarExames();
@@ -71,6 +73,8 @@ export class RequisicaoComponent implements OnInit {
       // pessoa?: Pessoa;
 
     })
+
+    this.fator = '';
   }
 
   pesquisar() {
@@ -103,9 +107,33 @@ export class RequisicaoComponent implements OnInit {
     });
   }
 
-  public obterExame(event: any) {
-    console.log('Evento ' + event.checked);
-    console.log('Exame ' + this.exame);
+  public eventoCheckBox(event:MatCheckboxChange) {
+    if(event.checked) {
+      this.fator = "SOMA"
+    } else {
+      this.fator = "SUBTRACAO"
+    }
   }
+
+  public obterExame(event: any) {
+    this._calcularTotalExame(this.valor, event.valor, this.fator);
+    this.getExamesSelecionados(event.id, this. fator);
+    
+  }
+
+  public getExamesSelecionados(id: number, fator: string) {
+    switch (fator) {
+      case 'SOMA':
+        this.examesSelecionados?.push(id);
+        break;
+      case 'SUBTRACAO':
+        this.examesSelecionados?.splice(this.examesSelecionados?.indexOf(id), 1);
+        break;
+      default:
+        break;
+    }
+    console.log(this.examesSelecionados);
+  }
+  
 
 }
