@@ -28,7 +28,7 @@ export class RequisicaoComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   fator: string = '';
-  examesSelecionados?: any[]=[];
+  examesSelecionados?: any[] = [];
 
   constructor(
     private requisicaoService: RequisicaoService,
@@ -69,8 +69,8 @@ export class RequisicaoComponent implements OnInit {
       crmMedico: new FormControl(req.crmMedico),
       valorTotalRequisicao: new FormControl(req.valorTotalRequisicao),
       dataCriacaoRequisicao: new FormControl(req.dataCriacaoRequisicao),
-      // exames: new FormControl(req.exames)
-      // pessoa?: Pessoa;
+      pessoa: new FormControl(req.pessoa),
+      exames: new FormControl(req.exames)
 
     })
 
@@ -83,7 +83,6 @@ export class RequisicaoComponent implements OnInit {
         if (res == null) {
           this.open("Cliente não está cadatrado!", "X");
         } else {
-          console.log(res)
           this.pessoa = res;
           this.visibleForm = true;
         }
@@ -95,7 +94,11 @@ export class RequisicaoComponent implements OnInit {
 
   onSubmit() {
     this.formRequisicao.value.valorTotalRequisicao = this.valor;
-    console.log(this.formRequisicao.value);
+    this.formRequisicao.value.pessoa = this.pessoa;
+    this.formRequisicao.value.exames =
+      console.log(this.formRequisicao.value);
+
+    // this.requisicaoService.salvarRequisicao()
   }
 
   // Retornar mensagem depois de salvar
@@ -107,8 +110,8 @@ export class RequisicaoComponent implements OnInit {
     });
   }
 
-  public eventoCheckBox(event:MatCheckboxChange) {
-    if(event.checked) {
+  public eventoCheckBox(event: MatCheckboxChange) {
+    if (event.checked) {
       this.fator = "SOMA"
     } else {
       this.fator = "SUBTRACAO"
@@ -117,8 +120,8 @@ export class RequisicaoComponent implements OnInit {
 
   public obterExame(event: any) {
     this._calcularTotalExame(this.valor, event.valor, this.fator);
-    this.getExamesSelecionados(event.id, this. fator);
-    
+    this.getExamesSelecionados(event.id, this.fator);
+
   }
 
   public getExamesSelecionados(id: number, fator: string) {
@@ -134,6 +137,6 @@ export class RequisicaoComponent implements OnInit {
     }
     console.log(this.examesSelecionados);
   }
-  
+
 
 }

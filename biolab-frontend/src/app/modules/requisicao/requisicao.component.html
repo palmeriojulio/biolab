@@ -56,51 +56,46 @@
       <div class="container">
         <h4>Selecione os exames:</h4>
         <div class="row">
-          <div class="col-4" style="background-color: aqua;">
+          <div class="col-4">
             <h4><strong>Bioquímica</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Bioquímica'"
-                    (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox *ngIf="e.tipo == 'Bioquímica'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - Valor: {{e.valor}}
               </mat-checkbox>
             </div>
           </div>
 
-          <div class="col-4" style="background-color: aquamarine;">
+          <div class="col-4">
             <h4><strong>Hematologia</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Hematologia'"
-              (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox *ngIf="e.tipo == 'Hematologia'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - Valor: {{e.valor}}
               </mat-checkbox>
             </div>
           </div>
 
-          <div class="col-4" style="background-color: aquamarine;">
+          <div class="col-4">
             <h4><strong>Imunologia/Sorologias</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Imunologia/Sorologias'"
-              (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox *ngIf="e.tipo == 'Imunologia/Sorologias'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - Valor: {{e.valor}}
               </mat-checkbox>
             </div>
           </div>
 
-          <div class="col-4" style="background-color: aqua; ">
+          <div class="col-4">
             <h4><strong>Parasitologia</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Parasitologia'"
-              (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox *ngIf="e.tipo == 'Parasitologia'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - Valor: {{e.valor}}
               </mat-checkbox>
             </div>
           </div>
 
-          <div class="col-4" style="background-color: aqua;">
+          <div class="col-4">
             <h4><strong>Uroanálise</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Uroanálise'"
-              (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox *ngIf="e.tipo == 'Uroanálise'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - Valor: {{e.valor}}
               </mat-checkbox>
             </div>
