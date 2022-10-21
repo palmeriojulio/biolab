@@ -60,7 +60,7 @@
             <h4><strong>Bioquímica</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Bioquímica'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} - Valor: {{e.valor}}
+                {{e.nome}} -- {{e.valor | currency : 'BRL' }}
               </mat-checkbox>
             </div>
           </div>
@@ -69,7 +69,7 @@
             <h4><strong>Hematologia</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Hematologia'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} - Valor: {{e.valor}}
+                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
@@ -78,7 +78,7 @@
             <h4><strong>Imunologia/Sorologias</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Imunologia/Sorologias'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} - Valor: {{e.valor}}
+                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
@@ -87,7 +87,7 @@
             <h4><strong>Parasitologia</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Parasitologia'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} - Valor: {{e.valor}}
+                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
@@ -96,23 +96,16 @@
             <h4><strong>Uroanálise</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Uroanálise'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} - Valor: {{e.valor}}
+                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
         </div>
       </div>
-
-
-
-      <!-- <section class="example-section" [formGroup]="toppings">
-        <h4>You chose:</h4>
-        {{toppings.value | json}}
-      </section> -->
     </form>
     <br>
     <div>
-      <h3><strong>Valor total dos exames:</strong> {{valor}}</h3>
+      <h3><strong>Valor total dos exames:</strong> {{valor | currency : 'BRL'}}</h3>
     </div>
     <div class="example-button-row">
       <button mat-flat-button class="background-color" (click)="onSubmit()">Salvar requisição</button>

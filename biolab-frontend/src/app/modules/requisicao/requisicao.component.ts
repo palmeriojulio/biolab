@@ -29,6 +29,7 @@ export class RequisicaoComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   fator: string = '';
   examesSelecionados?: any[] = [];
+  examesForm?: any[] = [];
 
   constructor(
     private requisicaoService: RequisicaoService,
@@ -95,10 +96,12 @@ export class RequisicaoComponent implements OnInit {
   onSubmit() {
     this.formRequisicao.value.valorTotalRequisicao = this.valor;
     this.formRequisicao.value.pessoa = this.pessoa;
-    this.formRequisicao.value.exames =
-      console.log(this.formRequisicao.value);
+    console.log(this.formRequisicao.value);
+    console.log(this.examesSelecionados);
 
-    // this.requisicaoService.salvarRequisicao()
+    this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
+
+    });
   }
 
   // Retornar mensagem depois de salvar
@@ -121,6 +124,8 @@ export class RequisicaoComponent implements OnInit {
   public obterExame(event: any) {
     this._calcularTotalExame(this.valor, event.valor, this.fator);
     this.getExamesSelecionados(event.id, this.fator);
+    this.formRequisicao.value.exames = this.examesSelecionados;
+    console.log(this.formRequisicao.value)
 
   }
 
@@ -135,6 +140,7 @@ export class RequisicaoComponent implements OnInit {
       default:
         break;
     }
+
     console.log(this.examesSelecionados);
   }
 
