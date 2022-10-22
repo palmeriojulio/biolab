@@ -24,6 +24,7 @@ public class ExameService {
 		try {
 			return exameRepository.findAll().stream()
 					.map(p -> ExameDto.fromExame(p))
+					.sorted((e1, e2) -> e1.getId().compareTo(e2.getId()))
 					.collect(Collectors.toList());			
 		} catch (RuntimeException e) {
 			e.printStackTrace();

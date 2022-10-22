@@ -24,6 +24,7 @@ public class PessoaService {
 		try {
 			return pessoaRepository.findAll().stream()
 					.map(p -> PessoaDto.fromPessoa(p))
+					.sorted((p1, p2) -> p1.getId().compareTo(p2.getId()))
 					.collect(Collectors.toList());			
 		} catch (RuntimeException e) {
 			e.printStackTrace();

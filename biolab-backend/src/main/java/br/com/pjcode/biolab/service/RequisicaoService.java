@@ -48,6 +48,7 @@ public class RequisicaoService {
 		try {
 			return exames.stream()
 					.map(e -> exameRepository.findById(e.getId()).get())
+					.sorted((e1, e2) -> e1.getId().compareTo(e2.getId()))
 					.collect(Collectors.toList());			
 		} catch (RuntimeException e) {
 			e.printStackTrace();

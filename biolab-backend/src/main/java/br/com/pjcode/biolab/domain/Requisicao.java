@@ -54,7 +54,7 @@ public class Requisicao {
 	@Column(name = "nome_medico", length = 80)
 	private String nomeMedico;
 	
-	@Column(name = "crm_medico", length = 6)
+	@Column(name = "crm_medico", length = 15)
 	private String crmMedico;
 	
 	@Column(name = "valor_total_requisicao")

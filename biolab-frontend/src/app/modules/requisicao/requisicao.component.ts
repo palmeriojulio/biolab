@@ -38,9 +38,13 @@ export class RequisicaoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this._calcularTotalExame(40.50, 30.25, "SUBTRACAO");
+    this._initRequisicao();
+  }
+
+  _initRequisicao() {
     this.createFormPesq(new Requisicao());
     this.createFormRequisicao(new Requisicao());
+    this.valor = 0;
     this.listarExames();
   }
 
@@ -98,7 +102,11 @@ export class RequisicaoComponent implements OnInit {
     this.formRequisicao.value.exames = this.examesSelecionados;
 
     this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
-
+      if (res != null) {
+        this.open("Requisição salva com sucesso", "X");
+        this._initRequisicao();
+        this.visibleForm = false;
+      }
     });
   }
 
