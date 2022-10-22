@@ -28,8 +28,7 @@ export class RequisicaoComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   fator: string = '';
-  examesSelecionados?: any[] = [];
-  examesForm?: any[] = [];
+  examesSelecionados?: Exame[] = [];
 
   constructor(
     private requisicaoService: RequisicaoService,
@@ -96,8 +95,7 @@ export class RequisicaoComponent implements OnInit {
   onSubmit() {
     this.formRequisicao.value.valorTotalRequisicao = this.valor;
     this.formRequisicao.value.pessoa = this.pessoa;
-    console.log(this.formRequisicao.value);
-    console.log(this.examesSelecionados);
+    this.formRequisicao.value.exames = this.examesSelecionados;
 
     this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
 
@@ -132,16 +130,14 @@ export class RequisicaoComponent implements OnInit {
   public getExamesSelecionados(id: number, fator: string) {
     switch (fator) {
       case 'SOMA':
-        this.examesSelecionados?.push(id);
+        this.examesSelecionados?.push(new Exame(id));
         break;
       case 'SUBTRACAO':
-        this.examesSelecionados?.splice(this.examesSelecionados?.indexOf(id), 1);
+        this.examesSelecionados?.splice(this.examesSelecionados?.indexOf(new Exame(id)));
         break;
       default:
         break;
     }
-
-    console.log(this.examesSelecionados);
   }
 
 

@@ -16,7 +16,7 @@ export class RequisicaoService {
   }
 
   salvarRequisicao(requisao: Requisicao): Observable<Requisicao> {
-    return this.http.post<Requisicao>(`${this.localUrl}requisicao`, JSON.stringify(requisao));
+    return this.http.post<Requisicao>(`${this.localUrl}requisicao`, requisao);
   }
 
   calcularTotalExame(total: number, valorExame: number, fator: string) {
