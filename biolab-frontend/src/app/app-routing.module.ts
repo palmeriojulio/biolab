@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './layout/default/default.component';
 import { ExameFormComponent } from './modules/exame-form/exame-form.component';
 import { ExameComponent } from './modules/exame/exame.component';
+import { PdfComponent } from './modules/pdf/pdf.component';
 import { PessoaFormComponent } from './modules/pessoa-form/pessoa-form.component';
 import { PessoaComponent } from './modules/pessoa/pessoa.component';
 import { RequisicaoComponent } from './modules/requisicao/requisicao.component';
@@ -26,6 +27,9 @@ const routes: Routes = [{
   }, {
     path: 'pessoa-form',
     component: PessoaFormComponent
+  }, {
+    path: 'pdf',
+    component: PdfComponent
   }]
 }];
 

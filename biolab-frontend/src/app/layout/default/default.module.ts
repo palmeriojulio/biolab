@@ -24,6 +24,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
+import { PdfComponent } from 'src/app/modules/pdf/pdf.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CpfCnpjPipe } from 'src/pipes/cpfcnpj.pipe';
 
@@ -44,6 +45,7 @@ registerLocaleData(ptBr);
     ExameFormComponent,
     PessoaComponent,
     PessoaFormComponent,
+    PdfComponent,
     CpfCnpjPipe
   ],
   imports: [

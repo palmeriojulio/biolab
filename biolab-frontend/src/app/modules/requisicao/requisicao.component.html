@@ -3,6 +3,7 @@
     <mat-icon class="mat-18">description</mat-icon>
     <span>Requisição</span>
   </mat-toolbar>
+  <button mat-button (click)="openDialog()">Open dialog</button>
   <br />
   <mat-card-content>
     <mat-card-title>Pesquisar cliente</mat-card-title>
@@ -18,7 +19,6 @@
     </form>
     <mat-divider></mat-divider>
   </mat-card-content>
-
   <mat-card-content *ngIf="visibleForm">
     <mat-card-title>Dados do paciente</mat-card-title>
     <br />

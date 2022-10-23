@@ -1,14 +1,16 @@
-﻿import { Exame } from './../../models/exame-model';
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Pessoa } from 'src/app/models/pessoa-model';
 import { Requisicao } from 'src/app/models/requisicao-model';
 import { ExameService } from 'src/app/services/exame.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
+import { PdfComponent } from '../pdf/pdf.component';
 
+import { Exame } from './../../models/exame-model';
 import { RequisicaoService } from './../../services/requisicao.service';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-requisicao',
@@ -34,7 +36,8 @@ export class RequisicaoComponent implements OnInit {
     private requisicaoService: RequisicaoService,
     private pessoaService: PessoaService,
     private exameService: ExameService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -106,6 +109,7 @@ export class RequisicaoComponent implements OnInit {
         this.open("Requisição salva com sucesso", "X");
         this._initRequisicao();
         this.visibleForm = false;
+        //this.openDialog(this.formRequisicao.value);
       }
     });
   }
@@ -117,6 +121,17 @@ export class RequisicaoComponent implements OnInit {
       verticalPosition: this.verticalPosition,
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(PdfComponent, {
+      height: '900px',
+      width: '1080px',
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.listarExames();
+    // });
   }
 
   public eventoCheckBox(event: MatCheckboxChange) {
@@ -147,6 +162,8 @@ export class RequisicaoComponent implements OnInit {
         break;
     }
   }
+
+
 
 
 }
