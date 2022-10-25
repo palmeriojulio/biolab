@@ -26,8 +26,8 @@ import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
 import { PdfComponent } from 'src/app/modules/pdf/pdf.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CpfCnpjPipe } from 'src/pipes/cpfcnpj.pipe';
 
+import { CpfPipe } from '../../../pipes/cpfcnpj.pipe';
 import { ExameFormComponent } from './../../modules/exame-form/exame-form.component';
 import { ExameComponent } from './../../modules/exame/exame.component';
 import { PessoaFormComponent } from './../../modules/pessoa-form/pessoa-form.component';
@@ -46,7 +46,7 @@ registerLocaleData(ptBr);
     PessoaComponent,
     PessoaFormComponent,
     PdfComponent,
-    CpfCnpjPipe
+    CpfPipe
   ],
   imports: [
     CommonModule,

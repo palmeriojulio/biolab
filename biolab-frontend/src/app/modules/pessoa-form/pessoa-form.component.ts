@@ -1,9 +1,11 @@
+import { CpfValidator } from './../../validador/cpf-validator';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Pessoa } from 'src/app/models/pessoa-model';
 import { PessoaService } from 'src/app/services/pessoa.service';
+import { stringToKeyValue } from '@angular/flex-layout/extended/style/style-transforms';
 
 @Component({
   selector: 'app-pessoa-form',
@@ -58,7 +60,6 @@ export class PessoaFormComponent implements OnInit {
   }
 
   onSubmit() {
-
     if (this.btn != "Editar") {
       this.pessoaService.salvarPessoa(this.formPessoa.value).subscribe((res: any) => {
         if (res != null) {
@@ -68,7 +69,6 @@ export class PessoaFormComponent implements OnInit {
         }
         this.fecharModal();
       });
-      this.formPessoa.reset(new Pessoa());
 
     } else {
       this.pessoaService.editarPessoa(this.formPessoa.value).subscribe((res: any) => {
@@ -80,6 +80,8 @@ export class PessoaFormComponent implements OnInit {
         this.fecharModal();
       })
     }
+
+    this.formPessoa.reset(new Pessoa());
   }
 
   public fecharModal() {
@@ -91,5 +93,24 @@ export class PessoaFormComponent implements OnInit {
       duration: this.durationInSeconds * 1000,
     });
   }
+
+
+  public validarCPF(value: string) {
+    if (typeof value !== 'string') {
+      return false;
+    }
+
+    value = value.replace(/[^\d]+/g, '');
+
+    if (value.length !== 11 || !!value.match(/(\d)\1{10}/)) {
+      return false;
+    }
+
+    const values = value.split('').map(el => +el);
+    const rest = (count: any) => (values.slice(0, count - 12).reduce((soma, el, index) => (soma + el * (count - index)), 0) * 10) % 11 % 10;
+
+    return rest(10) === values[9] && rest(11) === values[10];
+  }
+
 
 }

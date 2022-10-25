@@ -7,8 +7,8 @@ import { Pessoa } from 'src/app/models/pessoa-model';
 import { Requisicao } from 'src/app/models/requisicao-model';
 import { ExameService } from 'src/app/services/exame.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
-import { PdfComponent } from '../pdf/pdf.component';
 
+import { PdfComponent } from '../pdf/pdf.component';
 import { Exame } from './../../models/exame-model';
 import { RequisicaoService } from './../../services/requisicao.service';
 
