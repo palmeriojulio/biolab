@@ -26,8 +26,7 @@ import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
 import { PdfComponent } from 'src/app/modules/pdf/pdf.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
-import { CpfPipe } from '../../../pipes/cpfcnpj.pipe';
+import { CpfPipe } from '../../cpf.pipe';
 import { ExameFormComponent } from './../../modules/exame-form/exame-form.component';
 import { ExameComponent } from './../../modules/exame/exame.component';
 import { PessoaFormComponent } from './../../modules/pessoa-form/pessoa-form.component';
@@ -75,8 +74,7 @@ registerLocaleData(ptBr);
     MatCheckboxModule,
     MatListModule,
     NgxMaskModule.forRoot()
-  ]
-  ,
+  ],
   providers: [
     // ************************************
     { provide: LOCALE_ID, useValue: 'pt' },

@@ -3,7 +3,6 @@
     <mat-icon class="mat-18">description</mat-icon>
     <span>Requisição</span>
   </mat-toolbar>
-  <button mat-button (click)="openDialog()">Open dialog</button>
   <br />
   <mat-card-content>
     <mat-card-title>Pesquisar cliente</mat-card-title>
@@ -24,9 +23,9 @@
     <br />
     <div>
       <h3>
-        <span><strong>Nome: </strong> {{pessoa.nome}}</span>
-        | <span><strong>CPF: </strong> {{pessoa.cpf}}</span>
-        | <span><strong>Telefone: </strong> {{pessoa.telefone}}</span>
+        <span><strong>Nome: </strong> {{ pessoa.nome }}</span>
+        | <span><strong>CPF: </strong> {{ pessoa.cpf }}</span>
+        | <span><strong>Telefone: </strong> {{ pessoa.telefone }}</span>
       </h3>
     </div>
 

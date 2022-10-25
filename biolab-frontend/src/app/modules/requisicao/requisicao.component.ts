@@ -11,7 +11,6 @@ import { PessoaService } from 'src/app/services/pessoa.service';
 import { PdfComponent } from '../pdf/pdf.component';
 import { Exame } from './../../models/exame-model';
 import { RequisicaoService } from './../../services/requisicao.service';
-import { MatCheckboxChange } from '@angular/material/checkbox';
 import { RelatorioService } from 'src/app/services/relatorio.service';
 
 @Component({
@@ -170,9 +169,9 @@ export class RequisicaoComponent implements OnInit {
 
   goRelatorioRequisicao(idRequisicao: any) {
     this.relatorioService.relatorioRequisicao(idRequisicao).subscribe((data: any) => {
-      const file = new Blob([data], {type: 'application/pdf'});
+      const file = new Blob([data], { type: 'application/pdf' });
       const url = URL.createObjectURL(file);
-        window.open(url);
+      window.open(url);
     });
   }
 
