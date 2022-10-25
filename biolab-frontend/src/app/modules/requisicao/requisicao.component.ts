@@ -11,6 +11,8 @@ import { PessoaService } from 'src/app/services/pessoa.service';
 import { PdfComponent } from '../pdf/pdf.component';
 import { Exame } from './../../models/exame-model';
 import { RequisicaoService } from './../../services/requisicao.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+import { RelatorioService } from 'src/app/services/relatorio.service';
 
 @Component({
   selector: 'app-requisicao',
@@ -38,6 +40,7 @@ export class RequisicaoComponent implements OnInit {
     private exameService: ExameService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
+    private relatorioService: RelatorioService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +52,7 @@ export class RequisicaoComponent implements OnInit {
     this.createFormRequisicao(new Requisicao());
     this.valor = 0;
     this.listarExames();
+    this.examesSelecionados = [];
   }
 
   _calcularTotalExame(total: number, valor: number, fator: string) {
@@ -107,6 +111,7 @@ export class RequisicaoComponent implements OnInit {
     this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
       if (res != null) {
         this.open("Requisição salva com sucesso", "X");
+        this.goRelatorioRequisicao(res.id);
         this._initRequisicao();
         this.visibleForm = false;
         //this.openDialog(this.formRequisicao.value);
@@ -163,7 +168,13 @@ export class RequisicaoComponent implements OnInit {
     }
   }
 
-
+  goRelatorioRequisicao(idRequisicao: any) {
+    this.relatorioService.relatorioRequisicao(idRequisicao).subscribe((data: any) => {
+      const file = new Blob([data], {type: 'application/pdf'});
+      const url = URL.createObjectURL(file);
+        window.open(url);
+    });
+  }
 
 
 }

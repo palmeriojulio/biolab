@@ -67,9 +67,9 @@ export class PessoaComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'salvando') {
+      // if (result === 'salvando') {
         this.listarPessoas();
-      }
+      // }
     });
   }
 
