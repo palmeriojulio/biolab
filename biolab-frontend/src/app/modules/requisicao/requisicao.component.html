@@ -31,7 +31,7 @@
 
     <form [formGroup]="formRequisicao">
       <div mat-dialog-content>
-        <mat-form-field style="width: 30%; margin-inline-end: 8px;" appearance="outline">
+        <mat-form-field style="width: 50%; margin-inline-end: 8px;" appearance="outline">
           <mat-label>Nome médico</mat-label>
           <input matInput placeholder="Digite o nome do médico solicitante" formControlName="nomeMedico">
         </mat-form-field>
@@ -52,14 +52,14 @@
 
       <mat-divider></mat-divider>
 
-      <div class="container">
+      <div>
         <h4>Selecione os exames:</h4>
         <div class="row">
           <div class="col-4">
             <h4><strong>Bioquímica</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Bioquímica'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} -- {{e.valor | currency : 'BRL' }}
+                {{e.nome}} - {{e.valor | currency : 'BRL' }}
               </mat-checkbox>
             </div>
           </div>
@@ -68,34 +68,34 @@
             <h4><strong>Hematologia</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Hematologia'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
+                {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-3">
             <h4><strong>Imunologia/Sorologias</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Imunologia/Sorologias'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
+                {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-3">
             <h4><strong>Parasitologia</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Parasitologia'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
+                {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-3">
             <h4><strong>Uroanálise</strong></h4>
             <div *ngFor="let e of exames">
               <mat-checkbox *ngIf="e.tipo == 'Uroanálise'" (change)="eventoCheckBox($event); obterExame(e);">
-                {{e.nome}} -- {{e.valor | currency : 'BRL'}}
+                {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
           </div>
