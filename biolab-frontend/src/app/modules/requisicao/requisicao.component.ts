@@ -7,11 +7,10 @@ import { Pessoa } from 'src/app/models/pessoa-model';
 import { Requisicao } from 'src/app/models/requisicao-model';
 import { ExameService } from 'src/app/services/exame.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
+import { RelatorioService } from 'src/app/services/relatorio.service';
 
-import { PdfComponent } from '../pdf/pdf.component';
 import { Exame } from './../../models/exame-model';
 import { RequisicaoService } from './../../services/requisicao.service';
-import { RelatorioService } from 'src/app/services/relatorio.service';
 
 @Component({
   selector: 'app-requisicao',
@@ -125,17 +124,6 @@ export class RequisicaoComponent implements OnInit {
       verticalPosition: this.verticalPosition,
       duration: this.durationInSeconds * 1000,
     });
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(PdfComponent, {
-      height: '900px',
-      width: '1080px',
-    });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.listarExames();
-    // });
   }
 
   public eventoCheckBox(event: MatCheckboxChange) {
