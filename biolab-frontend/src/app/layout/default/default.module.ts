@@ -32,6 +32,7 @@ import { PessoaFormComponent } from './../../modules/pessoa-form/pessoa-form.com
 import { PessoaComponent } from './../../modules/pessoa/pessoa.component';
 import { RequisicaoComponent } from './../../modules/requisicao/requisicao.component';
 import { DefaultComponent } from './default.component';
+import { RequisicaoListComponent } from '../../modules/requisicao-list/requisicao-list.component';
 
 registerLocaleData(ptBr);
 
@@ -43,6 +44,7 @@ registerLocaleData(ptBr);
     ExameFormComponent,
     PessoaComponent,
     PessoaFormComponent,
+    RequisicaoListComponent,
     CpfPipe
   ],
   imports: [

@@ -6,6 +6,7 @@ import { ExameFormComponent } from './modules/exame-form/exame-form.component';
 import { ExameComponent } from './modules/exame/exame.component';
 import { PessoaFormComponent } from './modules/pessoa-form/pessoa-form.component';
 import { PessoaComponent } from './modules/pessoa/pessoa.component';
+import { RequisicaoListComponent } from './modules/requisicao-list/requisicao-list.component';
 import { RequisicaoComponent } from './modules/requisicao/requisicao.component';
 
 const routes: Routes = [{
@@ -26,6 +27,9 @@ const routes: Routes = [{
   }, {
     path: 'pessoa-form',
     component: PessoaFormComponent
+  }, {
+    path: 'requisicao-list',
+    component: RequisicaoListComponent
   }]
 }];
 

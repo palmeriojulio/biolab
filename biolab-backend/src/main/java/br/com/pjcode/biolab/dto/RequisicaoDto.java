@@ -21,8 +21,9 @@ public class RequisicaoDto {
 	private PessoaDto pessoa;
 	
 	private List<ExameDto> exames;
+	
 	private FormaPagamentoEnum formaPagamento;
-	@NotBlank(message = "Nome do médico não pode está vazio!")
+	
 	private String nomeMedico;
 	
 	private String crmMedico;

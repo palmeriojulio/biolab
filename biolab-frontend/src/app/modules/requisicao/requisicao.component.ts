@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -73,7 +73,7 @@ export class RequisicaoComponent implements OnInit {
 
   createFormRequisicao(req: Requisicao) {
     this.formRequisicao = new FormGroup({
-      formaPagamento: new FormControl(req.formaPagamento),
+      formaPagamento: new FormControl(req.formaPagamento, Validators.required),
       nomeMedico: new FormControl(req.nomeMedico),
       crmMedico: new FormControl(req.crmMedico),
       valorTotalRequisicao: new FormControl(req.valorTotalRequisicao),
@@ -102,19 +102,25 @@ export class RequisicaoComponent implements OnInit {
   }
 
   onSubmit() {
-    this.formRequisicao.value.valorTotalRequisicao = this.valor;
-    this.formRequisicao.value.pessoa = this.pessoa;
-    this.formRequisicao.value.exames = this.examesSelecionados;
 
-    this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
-      if (res != null) {
-        this.open("Requisição salva com sucesso", "X");
-        this.goRelatorioRequisicao(res.id);
-        this._initRequisicao();
-        this.visibleForm = false;
-        //this.openDialog(this.formRequisicao.value);
-      }
-    });
+    if (this.formRequisicao.value.formaPagamento == null) {
+      this.open("Escolha a forma de pagamento", "X");      
+    } else {
+      this.formRequisicao.value.valorTotalRequisicao = this.valor;
+      this.formRequisicao.value.pessoa = this.pessoa;
+      this.formRequisicao.value.exames = this.examesSelecionados;
+  
+      this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
+        if (res != null) {
+          this.open("Requisição salva com sucesso", "X");
+          this.goRelatorioRequisicao(res.id);
+          this._initRequisicao();
+          this.visibleForm = false;
+          //this.openDialog(this.formRequisicao.value);
+        }
+      });
+    }
+
   }
 
   // Retornar mensagem depois de salvar

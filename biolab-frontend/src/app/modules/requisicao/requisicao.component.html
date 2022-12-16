@@ -4,12 +4,11 @@
     <span>Requisição</span>
   </mat-toolbar>
   <br />
-  <mat-card-content>
-    <mat-card-title>Pesquisar cliente</mat-card-title>
+  <mat-card-content>   
     <br />
     <form [formGroup]="formPesq">
       <mat-form-field appearance="outline">
-        <mat-label>Pesquisar por CPF</mat-label>
+        <mat-label>Pesquisar cliente</mat-label>
         <input matInput placeholder="Digite o CPF" formControlName="cpf" mask="000.000.000-00" />
       </mat-form-field>
       <button mat-icon-button (click)="pesquisar()">
@@ -35,11 +34,11 @@
           <mat-label>Nome médico</mat-label>
           <input matInput placeholder="Digite o nome do médico solicitante" formControlName="nomeMedico">
         </mat-form-field>
-        <mat-form-field style="width: 15%; margin-inline-end: 8px;" appearance="outline">
+        <mat-form-field style="width: 25%; margin-inline-end: 8px;" appearance="outline">
           <mat-label>CRM</mat-label>
           <input matInput placeholder="Digite o CRM do médico" formControlName="crmMedico">
         </mat-form-field>
-        <mat-form-field style="width: 15%; margin-inline-end: 8px;" appearance="outline">
+        <mat-form-field style="width: 20%; margin-inline-end: 8px;" appearance="outline">
           <mat-label>Forma de pagamento</mat-label>
           <mat-select formControlName="formaPagamento">
             <mat-option value="A_VISTA">A VISTA</mat-option>
@@ -53,7 +52,8 @@
       <mat-divider></mat-divider>
 
       <div>
-        <h4>Selecione os exames:</h4>
+        <mat-card-title>Selecione os exames:</mat-card-title>
+        <br>
         <div class="row">
           <div class="col-4">
             <h4><strong>Bioquímica</strong></h4>
