@@ -19,7 +19,7 @@ export class ExameComponent implements OnInit {
   //Variáveis da lista
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  displayedColumns: string[] = ['id', 'nome', 'tipo', 'valor', 'editar']
+  displayedColumns: string[] = ['id', 'nome', 'tipo', 'valor', 'editar', 'excluir']
   dataSource!: MatTableDataSource<Exame>;
   exame!: Exame;
   durationInSeconds = 5;

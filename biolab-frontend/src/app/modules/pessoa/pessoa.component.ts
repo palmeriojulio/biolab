@@ -19,7 +19,7 @@ export class PessoaComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   dataSource!: MatTableDataSource<Pessoa>;
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'editar']
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'editar', 'excluir']
   pessoa!: Pessoa;
   durationInSeconds = 5;
 

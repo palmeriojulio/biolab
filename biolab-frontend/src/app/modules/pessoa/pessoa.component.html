@@ -27,7 +27,7 @@
 
       <ng-container matColumnDef="cpf">
         <th mat-header-cell *matHeaderCellDef> CPF </th>
-        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.cpf }} </td>
+        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.cpf | cpf}} </td>
       </ng-container>
 
       <!-- <ng-container matColumnDef="rg">
@@ -37,7 +37,7 @@
 
       <ng-container matColumnDef="telefone">
         <th mat-header-cell *matHeaderCellDef> Telefone </th>
-        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.telefone }} </td>
+        <td mat-cell *matCellDef="let pessoa"> {{ pessoa.telefone | phone}} </td>
       </ng-container>
 
       <!-- <ng-container matColumnDef="diabetico">
@@ -60,7 +60,13 @@
         <td mat-cell *matCellDef="let pessoa">
           <button mat-icon-button color="primary" aria-label="Editar Exame" (click)="editar(pessoa)">
             <mat-icon>edit</mat-icon>
-          </button>
+          </button>          
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="excluir">
+        <th mat-header-cell *matHeaderCellDef> Excluir </th>
+        <td mat-cell *matCellDef="let pessoa">          
           <button mat-icon-button color="warn" aria-label="Deletar Exame" (click)="deletar(pessoa.id)">
             <mat-icon>delete_outline</mat-icon>
           </button>

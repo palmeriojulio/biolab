@@ -41,7 +41,13 @@
           <button mat-icon-button color="primary" aria-label="Editar Exame" (click)="editar(exame)">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" aria-label="Deletar Exame" (click)="deletar(exame.id)">
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="excluir">
+        <th mat-header-cell *matHeaderCellDef> Excluir </th>
+        <td mat-cell *matCellDef="let pessoa">          
+          <button mat-icon-button color="warn" aria-label="Deletar Exame" (click)="deletar(pessoa.id)">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </td>

@@ -25,7 +25,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CpfPipe } from '../../cpf.pipe';
 import { ExameFormComponent } from './../../modules/exame-form/exame-form.component';
 import { ExameComponent } from './../../modules/exame/exame.component';
 import { PessoaFormComponent } from './../../modules/pessoa-form/pessoa-form.component';
@@ -33,6 +32,8 @@ import { PessoaComponent } from './../../modules/pessoa/pessoa.component';
 import { RequisicaoComponent } from './../../modules/requisicao/requisicao.component';
 import { DefaultComponent } from './default.component';
 import { RequisicaoListComponent } from '../../modules/requisicao-list/requisicao-list.component';
+import { CpfPipe } from '../../pipe/cpf.pipe';
+import { PhonePipe } from '../../pipe/phone.pipe';
 
 registerLocaleData(ptBr);
 
@@ -45,7 +46,8 @@ registerLocaleData(ptBr);
     PessoaComponent,
     PessoaFormComponent,
     RequisicaoListComponent,
-    CpfPipe
+    CpfPipe,
+    PhonePipe
   ],
   imports: [
     CommonModule,
