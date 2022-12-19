@@ -44,6 +44,18 @@ public class RequisicaoService {
 		}
 	}
 	
+	public List<RequisicaoDto> findAll() {
+		try {
+			return requisicaoRepository.findAll().stream()
+					.map(p -> RequisicaoDto.fromRequisicao(p))
+					.sorted((e1, e2) -> e1.getId().compareTo(e2.getId()))
+					.collect(Collectors.toList());
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	private List<Exame> regraExames(List<ExameDto> exames) {
 		try {
 			return exames.stream()

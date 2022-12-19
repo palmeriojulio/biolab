@@ -19,6 +19,10 @@ export class RequisicaoService {
     return this.http.post<Requisicao>(`${this.localUrl}requisicao`, requisao);
   }
 
+  listarTodasRequisicoes(): Observable<Requisicao[]> {
+    return this.http.get<Requisicao[]>(`${this.localUrl}requisicao/listar`);
+  }
+
   calcularTotalExame(total: number, valorExame: number, fator: string) {
     let params = { total: total, valorExame: valorExame, fator: fator };
     return this.http.get(`${this.localUrl}requisicao`, { params });

@@ -28,6 +28,11 @@ public class RequisicaoResource {
 		this.requisicaoService = requisicaoService;
 	}
 	
+	@GetMapping("/requisicao/listar")
+	public ResponseEntity<Object> getAll() {
+		return ResponseEntity.status(HttpStatus.OK).body(requisicaoService.findAll());
+	}
+	
 	@PostMapping("/requisicao")
 	public ResponseEntity<Object> salvarRequisicao(@RequestBody @Valid RequisicaoDto dto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(requisicaoService.save(dto));

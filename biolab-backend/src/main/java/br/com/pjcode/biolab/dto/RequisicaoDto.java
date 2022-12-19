@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-
 import br.com.pjcode.biolab.constantes.FormaPagamentoEnum;
 import br.com.pjcode.biolab.domain.Requisicao;
 import lombok.AllArgsConstructor;
