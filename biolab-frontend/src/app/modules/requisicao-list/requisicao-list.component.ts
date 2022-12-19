@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Requisicao } from 'src/app/models/requisicao-model';
+import { RelatorioService } from 'src/app/services/relatorio.service';
 import { RequisicaoService } from 'src/app/services/requisicao.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class RequisicaoListComponent implements OnInit {
   requisicao!: Requisicao;
 
   constructor(
-    private requisicaoServer: RequisicaoService
+    private requisicaoServer: RequisicaoService,
+    private relatorioService: RelatorioService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +32,14 @@ export class RequisicaoListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
     })    
+  }
+
+  goRelatorioRequisicao(idRequisicao: any) {
+    this.relatorioService.relatorioRequisicao(idRequisicao).subscribe((data: any) => {
+      const file = new Blob([data], { type: 'application/pdf' });
+      const url = URL.createObjectURL(file);
+      window.open(url);
+    });
   }
 
   applyFilter(event: Event) {
