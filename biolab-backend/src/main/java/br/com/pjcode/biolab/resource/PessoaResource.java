@@ -46,12 +46,11 @@ public class PessoaResource {
 	}
 	
 	@DeleteMapping("/pessoa/{id}")
-	public ResponseEntity<Object> deletarPessoa(
-			@PathVariable(value = "id") Long id) {
+	public ResponseEntity<Object> deletarPessoa(@PathVariable(value = "id") Long id) {
+			System.out.println(id);
 		if(Objects.isNull(pessoaService.findById(id))) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não encontrada");
 		} else {
-			System.out.println(id);
 			pessoaService.delete(id);
 			return ResponseEntity.status(HttpStatus.OK).body("Pessoa Excluída");
 		}
@@ -60,6 +59,7 @@ public class PessoaResource {
 	@GetMapping("/pessoa/id/{id}")
 	public ResponseEntity<Object> findById(
 			@PathVariable(value = "id") Long id) {
+		System.out.println(id);
 		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findById(id));
 	}
 	

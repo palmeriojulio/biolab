@@ -51,8 +51,7 @@ public class ExameResource {
 	}
 	
 	@DeleteMapping("/exame/{id}")
-	public ResponseEntity<Object> deletarExame(
-			@PathVariable(value = "id") Long id) {
+	public ResponseEntity<Object> deletarExame(@PathVariable(value = "id") Long id) {
 		if(Objects.isNull(exameService.findById(id))) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Exame não encontrado!");
 		} else {
