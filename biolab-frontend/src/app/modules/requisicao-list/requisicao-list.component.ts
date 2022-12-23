@@ -1,9 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Requisicao } from 'src/app/models/requisicao-model';
 import { RelatorioService } from 'src/app/services/relatorio.service';
 import { RequisicaoService } from 'src/app/services/requisicao.service';
+import { RequisicaoPdfComponent } from '../requisicao-pdf/requisicao-pdf.component';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-requisicao-list',
@@ -20,6 +23,7 @@ export class RequisicaoListComponent implements OnInit {
 
   constructor(
     private requisicaoServer: RequisicaoService,
+    private dialog: MatDialog,
     private relatorioService: RelatorioService
   ) { }
 
@@ -40,6 +44,12 @@ export class RequisicaoListComponent implements OnInit {
       const url = URL.createObjectURL(file);
       window.open(url);
     });
+  }
+
+  gerarPdf() {
+    let documento = new jsPDF();
+    documento.text("Relatório em PDF no Angular", 10, 10);
+    documento.output("dataurlnewwindow");
   }
 
   applyFilter(event: Event) {
