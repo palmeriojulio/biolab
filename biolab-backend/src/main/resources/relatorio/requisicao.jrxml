@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="requisicao" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="23f6bac9-a24d-4ddf-8db0-7d076f97e03f">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
@@ -54,7 +54,7 @@
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="15" y="0" width="39" height="20" uuid="ab8f980a-0143-4e7e-a1d7-d14aa08cc8aa">
+				<reportElement x="15" y="0" width="45" height="20" uuid="ab8f980a-0143-4e7e-a1d7-d14aa08cc8aa">
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -71,7 +71,7 @@
 				<text><![CDATA[Nome:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="54" y="0" width="286" height="20" uuid="930f4356-6fde-4534-8703-74e9ca65fe22">
+				<reportElement x="60" y="0" width="280" height="20" uuid="930f4356-6fde-4534-8703-74e9ca65fe22">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -84,7 +84,7 @@
 				<textFieldExpression><![CDATA[$F{nomePessoa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="15" y="20" width="29" height="20" uuid="d7b8c09c-bf80-4090-94c2-c88ddcd84b14">
+				<reportElement x="15" y="20" width="45" height="20" uuid="d7b8c09c-bf80-4090-94c2-c88ddcd84b14">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -102,7 +102,7 @@
 				<text><![CDATA[CPF:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="44" y="20" width="296" height="20" uuid="9cf82950-3c64-4345-9a14-4b31228b821e">
+				<reportElement x="60" y="20" width="280" height="20" uuid="9cf82950-3c64-4345-9a14-4b31228b821e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -115,7 +115,7 @@
 				<textFieldExpression><![CDATA[$F{cpfPessoa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="15" y="40" width="105" height="20" uuid="60fe7946-d6a4-49c0-80cf-55cc9e992057">
+				<reportElement x="15" y="40" width="83" height="20" uuid="60fe7946-d6a4-49c0-80cf-55cc9e992057">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -130,10 +130,10 @@
 					<font isBold="true" isItalic="true"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<text><![CDATA[Data de Nascimento:]]></text>
+				<text><![CDATA[Nascimento:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="120" y="40" width="220" height="20" uuid="a8faeb5e-daaa-42f8-9203-83ad546ed662">
+				<reportElement x="98" y="40" width="242" height="20" uuid="a8faeb5e-daaa-42f8-9203-83ad546ed662">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box>
@@ -146,7 +146,7 @@
 				<textFieldExpression><![CDATA[$F{dataNascimentoPessoa}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="15" y="60" width="126" height="20" uuid="c2a99213-928a-4b43-a1aa-e959abcedee4">
+				<reportElement x="15" y="60" width="205" height="20" uuid="c2a99213-928a-4b43-a1aa-e959abcedee4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -164,7 +164,7 @@
 				<text><![CDATA[Medicamentos que toma:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="141" y="60" width="199" height="20" uuid="25b6b256-3985-48e7-8228-c108d113731d">
+				<reportElement x="240" y="60" width="101" height="20" uuid="25b6b256-3985-48e7-8228-c108d113731d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>

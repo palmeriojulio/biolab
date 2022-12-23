@@ -40,8 +40,7 @@ export class PessoaService {
   }
 
   deletarPessoa(id: number) {
-    console.log(id);
-    return this.http.delete(`${this.localUrl}passoa/${id}`);
+    return this.http.delete(`${this.localUrl}pessoa/${id}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T): () => Observable<T> {
