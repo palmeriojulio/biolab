@@ -62,28 +62,31 @@ export class PessoaFormComponent implements OnInit {
     if (this.btn != "Editar") {
       this.pessoaService.salvarPessoa(this.formPessoa.value).subscribe((res: any) => {
         if (res != null) {
+          this.limpaForm();
           this.open('Cliente salva com sucesso!', 'X');
         } else {
+          this.limpaForm();
           this.open('Erro ao salvar o cliente!', 'X');
         }
         this.fecharModal();
       });
 
     } else {
-      this.pessoaService.editarPessoa(this.formPessoa.value).subscribe((res: any) => {
-        alert(res.error.text)
+      this.pessoaService.editarPessoa(this.formPessoa.value).subscribe((res: any) => {        
         if (res != null) {
+          this.limpaForm();
           this.open('Cliente atualizado com sucesso!', 'X');
         } else {
+          this.limpaForm();
           this.open('Erro ao atualizado a pessoa!', 'X');
         } 
         this.fecharModal();
-      }, (error) => {
-        alert(error.error.text);        
+      }, (error) => {        
+        alert(error.error.errors[0].defaultMessage);        
       });
     }
 
-    this.formPessoa.reset(new Pessoa());
+    
   }
 
   public fecharModal() {
@@ -94,5 +97,9 @@ export class PessoaFormComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+  public limpaForm() {
+    this.formPessoa.reset(new Pessoa());
   }
 }
