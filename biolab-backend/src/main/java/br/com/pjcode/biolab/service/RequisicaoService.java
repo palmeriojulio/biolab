@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import br.com.pjcode.biolab.dao.PessoaRepository;
 import br.com.pjcode.biolab.dao.RequisicaoRepository;
 import br.com.pjcode.biolab.domain.Exame;
 import br.com.pjcode.biolab.domain.Pessoa;
+import br.com.pjcode.biolab.domain.Requisicao;
 import br.com.pjcode.biolab.dto.ExameDto;
 import br.com.pjcode.biolab.dto.PessoaDto;
 import br.com.pjcode.biolab.dto.RequisicaoDto;
@@ -50,6 +52,16 @@ public class RequisicaoService {
 					.map(p -> RequisicaoDto.fromRequisicao(p))
 					.sorted((e1, e2) -> e1.getId().compareTo(e2.getId()))
 					.collect(Collectors.toList());
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public RequisicaoDto findById(Long id) {
+		try {
+			var requisicao = requisicaoRepository.findById(id);
+			return convertOptionalReturn(requisicao);			
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			return null;
@@ -105,6 +117,19 @@ public class RequisicaoService {
 			} else {
 				return PessoaDto.toPessoa(dto);
 			}
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	private RequisicaoDto convertOptionalReturn(Optional<Requisicao> requisicao) {
+		try {
+			if(requisicao.isPresent()) {
+				return RequisicaoDto.fromRequisicao(requisicao.get());
+			} else {
+				return null;
+			}			
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			return null;

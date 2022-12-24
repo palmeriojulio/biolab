@@ -59,7 +59,6 @@ public class PessoaResource {
 	@GetMapping("/pessoa/id/{id}")
 	public ResponseEntity<Object> findById(
 			@PathVariable(value = "id") Long id) {
-		System.out.println(id);
 		return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findById(id));
 	}
 	

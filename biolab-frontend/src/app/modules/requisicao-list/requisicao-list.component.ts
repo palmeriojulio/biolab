@@ -35,7 +35,7 @@ export class RequisicaoListComponent implements OnInit {
     this.requisicaoServer.listarTodasRequisicoes().subscribe((res: any) => {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
-    })    
+    })
   }
 
   goRelatorioRequisicao(idRequisicao: any) {
@@ -46,10 +46,19 @@ export class RequisicaoListComponent implements OnInit {
     });
   }
 
-  gerarPdf() {
-    let documento = new jsPDF();
-    documento.text("Relatório em PDF no Angular", 10, 10);
-    documento.output("dataurlnewwindow");
+  gerarPdf(idRequisicao: any) {
+    this.requisicaoServer.listarPorId(idRequisicao).subscribe((res: any) => {
+      this.requisicao = res;
+      var nome = this.requisicao.nomeMedico;
+
+      let documento = new jsPDF();
+
+      documento.setFillColor(50,50,50);
+      documento.rect(10,30,100,8);
+      documento.rect(10,38,100,8); 
+
+      documento.output("dataurlnewwindow");
+    })
   }
 
   applyFilter(event: Event) {
