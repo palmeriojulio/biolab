@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["raf","rgbcolor","dompurify","html2canvas"],
             "outputPath": "dist/biolab-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
