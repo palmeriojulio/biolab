@@ -8,6 +8,7 @@ import { RequisicaoService } from 'src/app/services/requisicao.service';
 import { RequisicaoPdfComponent } from '../requisicao-pdf/requisicao-pdf.component';
 import jsPDF from 'jspdf';
 import { Exame } from 'src/app/models/exame-model';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-requisicao-list',
@@ -21,7 +22,7 @@ export class RequisicaoListComponent implements OnInit {
   dataSource!: MatTableDataSource<Requisicao>;
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'valor', 'data', 'visualizar'];
   requisicao!: Requisicao;
-  exames: Exame[] | undefined;
+  exames: Exame[] = [];
   
   constructor(
     private requisicaoServer: RequisicaoService,
@@ -48,13 +49,11 @@ export class RequisicaoListComponent implements OnInit {
     });
   }
 
-  gerarPdf(idRequisicao: any) {
+  gerarPdf(idRequisicao: number) {
     this.requisicaoServer.listarPorId(idRequisicao).subscribe((res: any) => {
       
       this.requisicao = res;
-
-      let e = this.obterExames(this.requisicao.exames);
-          
+               
       let doc = new jsPDF();
 
       doc.setFont("times");
@@ -98,14 +97,18 @@ export class RequisicaoListComponent implements OnInit {
       doc.text("CRM do Médico: "+this.requisicao.crmMedico,+ 120, 60);
 
       doc.setFont("times");
-      doc.text("Exames solicitados",8,70);
+      doc.text("Exames solicitados:",8,70);
 
-      for (let i = 0; i < e.length; i++) {
-        const element = e[i];
-        console.log(element[i])
-        //doc.text("Exame: "+element[i].nome,+ 8, 75);
+      let x = 8;
+      let y = 80;
+
+      for (let i = 0; i < res.exames.length; i++) {
+        doc.text(res.exames[i].nome,+ x, y);
+        doc.text("\nR$ "+ res.exames[i].valor,+ x, y);
+        y = y + 10;
       }       
-            
+          
+      doc.text("Valor dos exames: R$ "+this.requisicao.valorTotalRequisicao,+ 8, 130);
       
       //doc.addImage("assets/rodape.png", "PNG", -1,123,201,30,"rodape");
 
@@ -154,17 +157,13 @@ export class RequisicaoListComponent implements OnInit {
     })
   }
 
+  gerarReqPdf(id: any){
+    
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  obterExames(e: any) {
-    const ex = e;
-    for (let i = 0; i < ex.length; i++) {
-      console.log(ex[i])
-    } 
-    return ex;
-  }
+  }  
 
 }

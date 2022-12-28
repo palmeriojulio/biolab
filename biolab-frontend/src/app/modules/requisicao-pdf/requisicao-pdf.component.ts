@@ -4,7 +4,7 @@ import jsPDF from 'jspdf';
 @Component({
   selector: 'app-requisicao-pdf',
   templateUrl: './requisicao-pdf.component.html',
-  styleUrls: ['./requisicao-pdf.component.css']
+  styleUrls: ['./requisicao-pdf.component.scss']
 })
 export class RequisicaoPdfComponent implements OnInit {
 
@@ -13,10 +13,5 @@ export class RequisicaoPdfComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  gerarPDF() {
-    let documento = new jsPDF();
-    documento.text("Relatório em PDF no Angular", 10, 10);
-    documento.output("dataurlnewwindow");
-  }
-
+ 
 }
