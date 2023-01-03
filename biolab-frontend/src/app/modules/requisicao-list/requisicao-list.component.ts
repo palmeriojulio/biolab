@@ -5,10 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Requisicao } from 'src/app/models/requisicao-model';
 import { RelatorioService } from 'src/app/services/relatorio.service';
 import { RequisicaoService } from 'src/app/services/requisicao.service';
-import { RequisicaoPdfComponent } from '../requisicao-pdf/requisicao-pdf.component';
 import jsPDF from 'jspdf';
 import { Exame } from 'src/app/models/exame-model';
-import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-requisicao-list',
@@ -54,10 +52,7 @@ export class RequisicaoListComponent implements OnInit {
 
       this.requisicao = res;
 
-      let data = new Date(res.pessoa.dataNascimento);
-
-      console.log(data);
-     //console.log(data.toLocaleString('pt-BR', { style: 'date', date: 'dd/MM/yyyy' }));
+      let dataCriacao = res.dataCriacaoRequisicao.split('-').reverse().join('/');
 
       let doc = new jsPDF();
 
@@ -80,8 +75,8 @@ export class RequisicaoListComponent implements OnInit {
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
       doc.text("Nome: " + this.requisicao.pessoa?.nome, + 10, 40);
-      doc.text("CPF: " + this.requisicao.pessoa?.cpf, + 10, 45);
-      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento, + 10, 50);
+      doc.text("CPF: " + this.requisicao.pessoa?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), + 10, 45);
+      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento?.split('-').reverse().join('/'), + 10, 50);
       doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 55);
       doc.text("Médico Solicitante: " + this.requisicao.nomeMedico, + 10, 60);
 
@@ -95,7 +90,7 @@ export class RequisicaoListComponent implements OnInit {
       doc.setFont("times");
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
-      doc.text("Tel: " + this.requisicao.pessoa?.telefone, + 120, 40);
+      doc.text("Tel: " + this.requisicao.pessoa?.telefone?.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, '($1) $2 $3-$4'), + 120, 40);
       doc.text("RG: " + this.requisicao.pessoa?.rg, + 120, 45);
       doc.text("Diabético: " + this.requisicao.pessoa?.diabetico, + 120, 50);
       doc.text("Outras Informações: " + this.requisicao.pessoa?.outrasInformacoes, + 120, 55);
@@ -108,26 +103,26 @@ export class RequisicaoListComponent implements OnInit {
       let y = 80;
 
       for (let i = 0; i < res.exames.length; i++) {
-               
+
         if (y == 140) {
           x = x + 50;
           y = 80
         }
-        
-        doc.text(res.exames[i].nome, + x, y);        
-        doc.text("\n" + res.exames[i].valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + x, y);        
+
+        doc.text(res.exames[i].nome, + x, y);
+        doc.text("\n" + res.exames[i].valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + x, y);
         y = y + 12;
-        
+
       }
-      
-      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'}), + 8, 142);
-      doc.text("Pagamento: " + this.requisicao.formaPagamento, + 38, 142);
-      doc.text("Data: " + this.requisicao.dataCriacaoRequisicao, + 80, 142);
-      
+
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 142);
+      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 38, 142);
+      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 80, 142);
+
       //doc.addImage("assets/rodape.png", "PNG", -1,123,201,30,"rodape");
-      
+
       doc.line(8, 148, 202, 148); // horizontal line
-      
+
       doc.text("Via - Cliente", 8, 174);
       doc.text("ID da requisição: " + this.requisicao.id, + 8, 179);
 
@@ -144,8 +139,8 @@ export class RequisicaoListComponent implements OnInit {
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
       doc.text("Nome: " + this.requisicao.pessoa?.nome, + 10, 189);
-      doc.text("CPF: " + this.requisicao.pessoa?.cpf, + 10, 194);
-      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento, + 10, 199);
+      doc.text("CPF: " + this.requisicao.pessoa?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), + 10, 194);
+      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento?.split('-').reverse().join('/'), + 10, 199);
       doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 204);
       doc.text("Médico Solicitante: " + this.requisicao.nomeMedico, + 10, 209);
 
@@ -159,7 +154,7 @@ export class RequisicaoListComponent implements OnInit {
       doc.setFont("times");
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
-      doc.text("Tel: " + this.requisicao.pessoa?.telefone, + 120, 189);
+      doc.text("Tel: " + this.requisicao.pessoa?.telefone?.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, '($1) $2 $3-$4'), + 120, 189);
       doc.text("RG: " + this.requisicao.pessoa?.rg, + 120, 194);
       doc.text("Diabético: " + this.requisicao.pessoa?.diabetico, + 120, 199);
       doc.text("Outras Informações: " + this.requisicao.pessoa?.outrasInformacoes, + 120, 204);
@@ -172,24 +167,21 @@ export class RequisicaoListComponent implements OnInit {
       let y2 = 230;
 
       for (let i = 0; i < res.exames.length; i++) {
-               
+
         if (y2 == 290) {
           x2 = x2 + 50;
           y2 = 230
         }
-        
-        doc.text(res.exames[i].nome, + x2, y2);        
-        doc.text("\nR$ " + res.exames[i].valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + x2, y2);        
+
+        doc.text(res.exames[i].nome, + x2, y2);
+        doc.text("\nR$ " + res.exames[i].valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + x2, y2);
         y2 = y2 + 12;
 
       }
 
-      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'}), + 8, 290);
-      doc.text("Pagamento: " + this.requisicao.formaPagamento, + 38, 290);
-      doc.text("Data: " + this.requisicao.dataCriacaoRequisicao, + 80, 290);
-
-
-
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 290);
+      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 38, 290);
+      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 80, 290);
 
       //doc.addImage("assets/rodape.png", "PNG", -1,271,201,25,"rodape");
 

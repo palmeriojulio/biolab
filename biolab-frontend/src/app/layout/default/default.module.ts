@@ -34,7 +34,6 @@ import { DefaultComponent } from './default.component';
 import { RequisicaoListComponent } from '../../modules/requisicao-list/requisicao-list.component';
 import { CpfPipe } from '../../pipe/cpf.pipe';
 import { PhonePipe } from '../../pipe/phone.pipe';
-import { RequisicaoPdfComponent } from './../../modules/requisicao-pdf/requisicao-pdf.component';
 
 registerLocaleData(ptBr);
 
@@ -47,7 +46,6 @@ registerLocaleData(ptBr);
     PessoaComponent,
     PessoaFormComponent,
     RequisicaoListComponent,
-    RequisicaoPdfComponent,
     CpfPipe,
     PhonePipe
   ],
