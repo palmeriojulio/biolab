@@ -54,6 +54,11 @@ export class RequisicaoListComponent implements OnInit {
 
       this.requisicao = res;
 
+      let data = new Date(res.pessoa.dataNascimento);
+
+      console.log(data);
+     //console.log(data.toLocaleString('pt-BR', { style: 'date', date: 'dd/MM/yyyy' }));
+
       let doc = new jsPDF();
 
       doc.setFont("times");
@@ -110,18 +115,21 @@ export class RequisicaoListComponent implements OnInit {
         }
         
         doc.text(res.exames[i].nome, + x, y);        
-        doc.text("\nR$ " + res.exames[i].valor, + x, y);        
+        doc.text("\n" + res.exames[i].valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + x, y);        
         y = y + 12;
-
+        
       }
-
-      doc.text("Valor: R$ " + this.requisicao.valorTotalRequisicao, + 8, 142);
+      
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'}), + 8, 142);
       doc.text("Pagamento: " + this.requisicao.formaPagamento, + 38, 142);
       doc.text("Data: " + this.requisicao.dataCriacaoRequisicao, + 80, 142);
-
+      
       //doc.addImage("assets/rodape.png", "PNG", -1,123,201,30,"rodape");
-
-      doc.line(10, 148, 200, 148); // horizontal line
+      
+      doc.line(8, 148, 202, 148); // horizontal line
+      
+      doc.text("Via - Cliente", 8, 174);
+      doc.text("ID da requisição: " + this.requisicao.id, + 8, 179);
 
       doc.addImage("assets/biolab_logo.png", "PNG", 83, 160.5, 120, 18.5);
 
@@ -157,8 +165,31 @@ export class RequisicaoListComponent implements OnInit {
       doc.text("Outras Informações: " + this.requisicao.pessoa?.outrasInformacoes, + 120, 204);
       doc.text("CRM do Médico: " + this.requisicao.crmMedico, + 120, 209);
 
-      doc.text("Via - Cliente", 8, 174);
-      doc.text("ID da requisição: " + this.requisicao.id, + 8, 179);
+      doc.setFont("times");
+      doc.text("Exames solicitados:", 8, 219);
+
+      let x2 = 8;
+      let y2 = 230;
+
+      for (let i = 0; i < res.exames.length; i++) {
+               
+        if (y2 == 290) {
+          x2 = x2 + 50;
+          y2 = 230
+        }
+        
+        doc.text(res.exames[i].nome, + x2, y2);        
+        doc.text("\nR$ " + res.exames[i].valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + x2, y2);        
+        y2 = y2 + 12;
+
+      }
+
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', {style:'currency', currency: 'BRL'}), + 8, 290);
+      doc.text("Pagamento: " + this.requisicao.formaPagamento, + 38, 290);
+      doc.text("Data: " + this.requisicao.dataCriacaoRequisicao, + 80, 290);
+
+
+
 
       //doc.addImage("assets/rodape.png", "PNG", -1,271,201,25,"rodape");
 
