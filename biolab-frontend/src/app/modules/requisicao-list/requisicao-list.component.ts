@@ -56,6 +56,8 @@ export class RequisicaoListComponent implements OnInit {
 
       let doc = new jsPDF();
 
+      doc.setProperties({ title: 'Requisição - '+this.requisicao.pessoa?.nome });
+
       doc.setFont("times");
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
