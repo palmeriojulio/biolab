@@ -47,7 +47,6 @@ public class PessoaResource {
 	
 	@DeleteMapping("/pessoa/{id}")
 	public ResponseEntity<Object> deletarPessoa(@PathVariable(value = "id") Long id) {
-			System.out.println(id);
 		if(Objects.isNull(pessoaService.findById(id))) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não encontrada");
 		} else {

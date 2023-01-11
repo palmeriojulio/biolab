@@ -54,13 +54,12 @@ public class PessoaService {
 	
 	public PessoaDto update(PessoaDto dto) {
 		try {
-			
+			var pessoa = pessoaRepository.save(PessoaDto.toPessoa(dto));
+			return convertReturn(pessoa);			
 		} catch (RuntimeException e) {
 			e.printStackTrace();
 			return null;
 		}
-		var pessoa = pessoaRepository.save(PessoaDto.toPessoa(dto));
-		return convertReturn(pessoa);
 	}
 	
 	public void delete(Long id) {

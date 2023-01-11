@@ -113,7 +113,7 @@ export class RequisicaoComponent implements OnInit {
       this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
         if (res != null) {
           this.open("Requisição salva com sucesso", "X");
-          this.goRelatorioRequisicao(res.id);
+          //this.goRelatorioRequisicao(res.id);
           this._initRequisicao();
           this.visibleForm = false;
           //this.openDialog(this.formRequisicao.value);
@@ -144,7 +144,6 @@ export class RequisicaoComponent implements OnInit {
     this._calcularTotalExame(this.valor, event.valor, this.fator);
     this.getExamesSelecionados(event.id, this.fator);
     this.formRequisicao.value.exames = this.examesSelecionados;
-    console.log(this.formRequisicao.value)
 
   }
 

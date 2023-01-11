@@ -52,7 +52,7 @@ export class RequisicaoListComponent implements OnInit {
 
       this.requisicao = res;
 
-      let dataCriacao = res.dataCriacaoRequisicao.split('-').reverse().join('/');
+      //let dataCriacao = res.dataCriacaoRequisicao.split('-').reverse().join('/');
 
       let doc = new jsPDF();
 
@@ -61,54 +61,54 @@ export class RequisicaoListComponent implements OnInit {
       doc.setFont("times");
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
-      doc.text("Via - Biolab", 8, 24);
-      doc.text("ID da requisição: " + this.requisicao.id, + 8, 29);
+      doc.text("Via - Biolab", 8, 19);
+      doc.text("Requisição: " + this.requisicao.id, + 8, 24);
 
-      doc.addImage("assets/biolab_logo.png", "PNG", 83, 11.5, 120, 18.5);
+      doc.addImage("assets/biolab_logo.png", "PNG", 83, 6, 120, 18.5);
 
       doc.setFillColor(0, 0, 0);
+      doc.rect(8, 31, 110, 5);
       doc.rect(8, 36, 110, 5);
       doc.rect(8, 41, 110, 5);
       doc.rect(8, 46, 110, 5);
       doc.rect(8, 51, 110, 5);
-      doc.rect(8, 56, 110, 5);
 
       doc.setFont("times");
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
-      doc.text("Nome: " + this.requisicao.pessoa?.nome, + 10, 40);
-      doc.text("CPF: " + this.requisicao.pessoa?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), + 10, 45);
-      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento?.split('-').reverse().join('/'), + 10, 50);
-      doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 55);
-      doc.text("Médico Solicitante: " + this.requisicao.nomeMedico, + 10, 60);
+      doc.text("Nome: " + this.requisicao.pessoa?.nome, + 10, 35);
+      doc.text("CPF: " + this.requisicao.pessoa?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), + 10, 40);
+      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento?.split('-').reverse().join('/'), + 10, 45);
+      doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 50);
+      doc.text("Médico Solicitante: " + this.requisicao.nomeMedico, + 10, 55);
 
       doc.setFillColor(0, 0, 0);
+      doc.rect(118, 31, 85, 5);
       doc.rect(118, 36, 85, 5);
       doc.rect(118, 41, 85, 5);
       doc.rect(118, 46, 85, 5);
       doc.rect(118, 51, 85, 5);
-      doc.rect(118, 56, 85, 5);
 
       doc.setFont("times");
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
-      doc.text("Tel: " + this.requisicao.pessoa?.telefone?.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, '($1) $2 $3-$4'), + 120, 40);
-      doc.text("RG: " + this.requisicao.pessoa?.rg, + 120, 45);
-      doc.text("Diabético: " + this.requisicao.pessoa?.diabetico, + 120, 50);
-      doc.text("Outras Informações: " + this.requisicao.pessoa?.outrasInformacoes, + 120, 55);
-      doc.text("CRM do Médico: " + this.requisicao.crmMedico, + 120, 60);
+      doc.text("Tel: " + this.requisicao.pessoa?.telefone?.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, '($1) $2 $3-$4'), + 120, 35);
+      doc.text("RG: " + this.requisicao.pessoa?.rg, + 120, 40);
+      doc.text("Diabético: " + this.requisicao.pessoa?.diabetico, + 120, 45);
+      doc.text("Outras Informações: " + this.requisicao.pessoa?.outrasInformacoes, + 120, 50);
+      doc.text("CRM do Médico: " + this.requisicao.crmMedico, + 120, 55);
 
       doc.setFont("times");
-      doc.text("Exames solicitados:", 8, 70);
+      doc.text("Exames solicitados:", 8, 63);
 
       let x = 8;
-      let y = 80;
+      let y = 70;
 
       for (let i = 0; i < res.exames.length; i++) {
 
-        if (y == 140) {
+        if (y == 142) {
           x = x + 50;
-          y = 80
+          y = 70
         }
 
         doc.text(res.exames[i].nome, + x, y);
@@ -117,62 +117,62 @@ export class RequisicaoListComponent implements OnInit {
 
       }
 
-      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 142);
-      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 38, 142);
-      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 80, 142);
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 144);
+      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 39, 144);
+      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 78, 144);
 
       //doc.addImage("assets/rodape.png", "PNG", -1,123,201,30,"rodape");
 
       doc.line(8, 148, 202, 148); // horizontal line
 
-      doc.text("Via - Cliente", 8, 174);
-      doc.text("ID da requisição: " + this.requisicao.id, + 8, 179);
+      doc.text("Via - Cliente", 8, 169);
+      doc.text("ID da requisição: " + this.requisicao.id, + 8, 174);
 
-      doc.addImage("assets/biolab_logo.png", "PNG", 83, 160.5, 120, 18.5);
+      doc.addImage("assets/biolab_logo.png", "PNG", 83, 155, 120, 18.5);
 
       doc.setFillColor(0, 0, 0);
+      doc.rect(8, 180, 110, 5);
       doc.rect(8, 185, 110, 5);
-      doc.rect(8, 190, 110, 5);
-      doc.rect(8, 195, 110, 5)
+      doc.rect(8, 190, 110, 5)
+      doc.rect(8, 195, 110, 5);
       doc.rect(8, 200, 110, 5);
-      doc.rect(8, 205, 110, 5);
 
       doc.setFont("times")
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
-      doc.text("Nome: " + this.requisicao.pessoa?.nome, + 10, 189);
-      doc.text("CPF: " + this.requisicao.pessoa?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), + 10, 194);
-      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento?.split('-').reverse().join('/'), + 10, 199);
-      doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 204);
-      doc.text("Médico Solicitante: " + this.requisicao.nomeMedico, + 10, 209);
+      doc.text("Nome: " + this.requisicao.pessoa?.nome, + 10, 184);
+      doc.text("CPF: " + this.requisicao.pessoa?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), + 10, 189);
+      doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento?.split('-').reverse().join('/'), + 10, 194);
+      doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 199);
+      doc.text("Médico Solicitante: " + this.requisicao.nomeMedico, + 10, 204);
 
       doc.setFillColor(0, 0, 0);
+      doc.rect(118, 180, 85, 5);
       doc.rect(118, 185, 85, 5);
       doc.rect(118, 190, 85, 5);
       doc.rect(118, 195, 85, 5);
       doc.rect(118, 200, 85, 5);
-      doc.rect(118, 205, 85, 5);
 
       doc.setFont("times");
       doc.setFontSize(11);
       doc.setTextColor(0, 0, 0);
-      doc.text("Tel: " + this.requisicao.pessoa?.telefone?.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, '($1) $2 $3-$4'), + 120, 189);
-      doc.text("RG: " + this.requisicao.pessoa?.rg, + 120, 194);
-      doc.text("Diabético: " + this.requisicao.pessoa?.diabetico, + 120, 199);
-      doc.text("Outras Informações: " + this.requisicao.pessoa?.outrasInformacoes, + 120, 204);
-      doc.text("CRM do Médico: " + this.requisicao.crmMedico, + 120, 209);
+      doc.text("Tel: " + this.requisicao.pessoa?.telefone?.replace(/(\d{2})?(\d{1})?(\d{4})?(\d{4})/, '($1) $2 $3-$4'), + 120, 184);
+      doc.text("RG: " + this.requisicao.pessoa?.rg, + 120, 189);
+      doc.text("Diabético: " + this.requisicao.pessoa?.diabetico, + 120, 194);
+      doc.text("Outras Informações: " + this.requisicao.pessoa?.outrasInformacoes, + 120, 199);
+      doc.text("CRM do Médico: " + this.requisicao.crmMedico, + 120, 204);
 
       doc.setFont("times");
-      doc.text("Exames solicitados:", 8, 219);
+      doc.text("Exames solicitados:", 8, 212);
 
       let x2 = 8;
-      let y2 = 230;
+      let y2 = 220;
 
       for (let i = 0; i < res.exames.length; i++) {
 
-        if (y2 == 290) {
+        if (y2 == 292) {
           x2 = x2 + 50;
-          y2 = 230
+          y2 = 220;
         }
 
         doc.text(res.exames[i].nome, + x2, y2);
@@ -181,9 +181,9 @@ export class RequisicaoListComponent implements OnInit {
 
       }
 
-      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 290);
-      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 38, 290);
-      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 80, 290);
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 294);
+      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 39, 294);
+      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 79, 294);
 
       //doc.addImage("assets/rodape.png", "PNG", -1,271,201,25,"rodape");
 
