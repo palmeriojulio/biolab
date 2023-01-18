@@ -66,7 +66,7 @@ public class ExameService {
 			var exame =  exameRepository.save(ExameDto.toExame(dto));
 			return convertReturn(exame);		
 		} catch (RuntimeException e) {
-			throw new Exception(""+e.getMessage());
+			throw new Exception("Erro ao salvar o exame:"+e.getMessage());
 		}
 	}
 	

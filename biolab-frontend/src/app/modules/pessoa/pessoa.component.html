@@ -2,12 +2,12 @@
 
   <mat-toolbar class="background-color">
     <mat-icon class="mat-18">person</mat-icon>
-    <span>Clientes cadastrados</span>
+    <span>Pacientes cadastrados</span>
   </mat-toolbar>
 
-  <button mat-raised-button (click)="openDialog(pessoa)">Adiconar cliente</button>
+  <button mat-raised-button (click)="openDialog(pessoa)">Adiconar pacientes</button>
 
-  <mat-form-field appearance="standard" style="margin-left: 10px; width: 85%;">
+  <mat-form-field appearance="standard" style="margin-left: 10px; width: 84%;">
     <input matInput (keyup)="applyFilter($event)" placeholder="digite o nome ou cpf do cliente" #input>
     <mat-label>Pesquisar</mat-label>
   </mat-form-field>

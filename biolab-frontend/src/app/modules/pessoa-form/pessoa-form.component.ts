@@ -81,8 +81,8 @@ export class PessoaFormComponent implements OnInit {
           this.open('Erro ao atualizado a pessoa!', 'X');
         } 
         this.fecharModal();
-      }, (error) => {        
-        alert(error.error.errors[0].defaultMessage);        
+      }, (error) => {          
+        this.open(error.error.errors[0].defaultMessage, 'X');      
       });
     }
 
