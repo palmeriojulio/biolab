@@ -139,7 +139,6 @@ export class RequisicaoComponent implements OnInit {
     if (event.checked) {
       this.fator = "SOMA"
       this.conteExames = this.conteExames + 1;
-
       if (this.conteExames >= 24) {
         this.open("Quantidade de exames não pode passar de 24!", "X");
         this.btnSalvar = true
@@ -148,7 +147,6 @@ export class RequisicaoComponent implements OnInit {
     } else {
       this.fator = "SUBTRACAO"
       this.conteExames = this.conteExames - 1;
-
       if (this.conteExames <= 23) {
         this.btnSalvar = false
       }
