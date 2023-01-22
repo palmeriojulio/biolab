@@ -7,7 +7,7 @@ import { Pessoa } from 'src/app/models/pessoa-model';
 import { Requisicao } from 'src/app/models/requisicao-model';
 import { ExameService } from 'src/app/services/exame.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
-import { RelatorioService } from 'src/app/services/relatorio.service';
+import { Router } from '@angular/router';
 
 import { Exame } from './../../models/exame-model';
 import { RequisicaoService } from './../../services/requisicao.service';
@@ -20,6 +20,8 @@ import { RequisicaoService } from './../../services/requisicao.service';
 export class RequisicaoComponent implements OnInit {
 
   valor: number = 0;
+  conteExames: number = 0;
+  btnSalvar = false;
   formPesq!: FormGroup;
   formRequisicao!: FormGroup;
   visibleForm: boolean = false;
@@ -31,6 +33,7 @@ export class RequisicaoComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   fator: string = '';
   examesSelecionados?: Exame[] = [];
+  route!: Router;
 
   constructor(
     private requisicaoService: RequisicaoService,
@@ -38,8 +41,8 @@ export class RequisicaoComponent implements OnInit {
     private exameService: ExameService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private relatorioService: RelatorioService
-  ) { }
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this._initRequisicao();
@@ -113,18 +116,18 @@ export class RequisicaoComponent implements OnInit {
       this.requisicaoService.salvarRequisicao(this.formRequisicao.value).subscribe((res: any) => {
         if (res != null) {
           this.open("Requisição salva com sucesso", "X");
-          //this.goRelatorioRequisicao(res.id);
           this._initRequisicao();
           this.visibleForm = false;
-          //this.openDialog(this.formRequisicao.value);
         }
+        this.router.navigate(['/requisicao-list']);
       });
     }
-
   }
 
+
+
   // Retornar mensagem depois de salvar
-  open(message: string, action: string) {
+  open(message: string, action: string,) {
     this.snackBar.open(message, action, {
       horizontalPosition: this.horizontalPosition,
       verticalPosition: this.verticalPosition,
@@ -132,11 +135,23 @@ export class RequisicaoComponent implements OnInit {
     });
   }
 
-  public eventoCheckBox(event: MatCheckboxChange) {
+  public eventoCheckBox(event: MatCheckboxChange) {    
     if (event.checked) {
       this.fator = "SOMA"
+      this.conteExames = this.conteExames + 1;
+
+      if (this.conteExames >= 24) {
+        this.open("Quantidade de exames não pode passar de 24!", "X");
+        this.btnSalvar = true
+      }
+      
     } else {
       this.fator = "SUBTRACAO"
+      this.conteExames = this.conteExames - 1;
+
+      if (this.conteExames <= 23) {
+        this.btnSalvar = false
+      }
     }
   }
 
@@ -159,14 +174,5 @@ export class RequisicaoComponent implements OnInit {
         break;
     }
   }
-
-  goRelatorioRequisicao(idRequisicao: any) {
-    this.relatorioService.relatorioRequisicao(idRequisicao).subscribe((data: any) => {
-      const file = new Blob([data], { type: 'application/pdf' });
-      const url = URL.createObjectURL(file);
-      window.open(url);
-    });
-  }
-
 
 }

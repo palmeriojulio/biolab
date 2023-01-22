@@ -4,12 +4,12 @@
     <span> Iniciar requisição</span>
   </mat-toolbar>
   <br />
-  <p>Para iniciar uma requisição pesquise o paciente pelo cpf</p>
+  <span>Inicie uma requisição pesquisando pelo cpf do paciente.</span>
   <mat-card-content>   
     <br />
     <form [formGroup]="formPesq">
       <mat-form-field appearance="outline">
-        <mat-label>Pesquisar cliente</mat-label>
+        <mat-label>Pesquisar paciente</mat-label>
         <input matInput placeholder="Digite o CPF" formControlName="cpf" mask="000.000.000-00" />
       </mat-form-field>
       <button mat-icon-button (click)="pesquisar()">
@@ -59,7 +59,7 @@
           <div class="col-4">
             <h4><strong>Bioquímica</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Bioquímica'" (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox color="primary" *ngIf="e.tipo == 'Bioquímica'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - {{e.valor | currency : 'BRL' }}
               </mat-checkbox>
             </div>
@@ -68,7 +68,7 @@
           <div class="col-4">
             <h4><strong>Hematologia</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Hematologia'" (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox color="primary" *ngIf="e.tipo == 'Hematologia'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
@@ -77,7 +77,7 @@
           <div class="col-3">
             <h4><strong>Imunologia/Sorologias</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Imunologia/Sorologias'" (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox color="primary" *ngIf="e.tipo == 'Imunologia/Sorologias'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
@@ -86,7 +86,7 @@
           <div class="col-3">
             <h4><strong>Parasitologia</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Parasitologia'" (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox color="primary" *ngIf="e.tipo == 'Parasitologia'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
@@ -95,7 +95,7 @@
           <div class="col-3">
             <h4><strong>Uroanálise</strong></h4>
             <div *ngFor="let e of exames">
-              <mat-checkbox *ngIf="e.tipo == 'Uroanálise'" (change)="eventoCheckBox($event); obterExame(e);">
+              <mat-checkbox color="primary" *ngIf="e.tipo == 'Uroanálise'" (change)="eventoCheckBox($event); obterExame(e);">
                 {{e.nome}} - {{e.valor | currency : 'BRL'}}
               </mat-checkbox>
             </div>
@@ -108,7 +108,7 @@
       <h3><strong>Valor total dos exames:</strong> {{valor | currency : 'BRL'}}</h3>
     </div>
     <div class="example-button-row">
-      <button mat-flat-button class="background-color" (click)="onSubmit()">Salvar requisição</button>
+      <button mat-flat-button class="background-color" [disabled]="btnSalvar" (click)="onSubmit()">Salvar requisição</button>
     </div>
     <br>
   </mat-card-content>

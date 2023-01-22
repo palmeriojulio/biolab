@@ -51,9 +51,7 @@ export class RequisicaoListComponent implements OnInit {
     this.requisicaoServer.listarPorId(idRequisicao).subscribe((res: any) => {
 
       this.requisicao = res;
-
-      //let dataCriacao = res.dataCriacaoRequisicao.split('-').reverse().join('/');
-
+      
       let doc = new jsPDF();
 
       doc.setProperties({ title: 'Requisição - '+this.requisicao.pessoa?.nome });
@@ -117,9 +115,9 @@ export class RequisicaoListComponent implements OnInit {
 
       }
 
-      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 144);
-      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 39, 144);
-      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 78, 144);
+      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 8, 144);
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 39, 144);
+      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 70, 144);
 
       //doc.addImage("assets/rodape.png", "PNG", -1,123,201,30,"rodape");
 
@@ -181,9 +179,9 @@ export class RequisicaoListComponent implements OnInit {
 
       }
 
-      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 8, 294);
-      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 39, 294);
-      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 79, 294);
+      doc.text("Data: " + res.dataCriacaoRequisicao.split('-').reverse().join('/'), + 8, 294);
+      doc.text("Valor: " + this.requisicao.valorTotalRequisicao?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }), + 39, 294);
+      doc.text("Pagamento: " + this.requisicao.formaPagamento?.split('_').join(' '), + 70, 294);
 
       //doc.addImage("assets/rodape.png", "PNG", -1,271,201,25,"rodape");
 
