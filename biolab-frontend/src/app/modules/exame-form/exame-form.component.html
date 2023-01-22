@@ -11,10 +11,18 @@
         <mat-label>Nome</mat-label>
         <input matInput placeholder="Digite o nome do exame" formControlName="nome" />
       </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 49%; margin-right: 3px">
+
+      <mat-form-field style="width: 49%; margin-right: 3px" appearance="outline">
         <mat-label>Tipo</mat-label>
-        <input matInput placeholder="Digite o tipo do exame" formControlName="tipo" />
+        <mat-select formControlName="tipo">
+          <mat-option value="Hematologia">Hematologia</mat-option>
+          <mat-option value="Bioquímica">Bioquímica</mat-option>
+          <mat-option value="Imunologia/Sorologias">Imunologia/Sorologias</mat-option>
+          <mat-option value="Parasitologia">Parasitologia</mat-option>
+          <mat-option value="Uroanálise">Uroanálise</mat-option>
+        </mat-select>
       </mat-form-field>
+
       <mat-form-field appearance="outline" style="width: 50%">
         <mat-label>Valor</mat-label>
         <input matInput type="number" placeholder="Digite o valor do exame" formControlName="valor">
