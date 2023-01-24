@@ -77,7 +77,7 @@ export class RequisicaoListComponent implements OnInit {
       doc.text("Nome: " + this.requisicao.pessoa?.nome, + 10, 35);
       doc.text("CPF: " + this.requisicao.pessoa?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4"), + 10, 40);
       doc.text("Data de Nascimento: " + this.requisicao.pessoa?.dataNascimento?.split('-').reverse().join('/'), + 10, 45);
-      doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 50);
+      doc.text("Medicamentos que toma: " + this.requisicao.pessoa?.medicamentosQueToma, + 10, 50);        
       doc.text("Médico Solicitante: " + this.requisicao.nomeMedico, + 10, 55);
 
       doc.setFillColor(0, 0, 0);

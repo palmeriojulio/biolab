@@ -2,6 +2,7 @@ package br.com.pjcode.biolab.service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -41,6 +42,16 @@ public class UsuarioService {
 			return null;
 		}
 	}
+	
+	public Optional<Usuario> findByLogin(String login) {
+		try {
+			var usuario = usuarioRepository.findByLogin(login);
+			return usuario;
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	private UsuarioDto convertReturn(Usuario usuario) {
 		try {
@@ -48,6 +59,19 @@ public class UsuarioService {
 				return UsuarioDto.fromUsuario(usuario);
 			} else {
 				return null;			
+			}			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	private UsuarioDto convertOptionalReturn(Optional<Usuario> usuario) {
+		try {
+			if(usuario.isPresent()) {
+				return UsuarioDto.fromUsuario(usuario.get());
+			} else {
+				return null;
 			}			
 		} catch (RuntimeException e) {
 			e.printStackTrace();

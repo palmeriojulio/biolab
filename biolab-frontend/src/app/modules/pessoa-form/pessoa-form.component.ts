@@ -4,7 +4,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Pessoa } from 'src/app/models/pessoa-model';
 import { PessoaService } from 'src/app/services/pessoa.service';
-import { stringToKeyValue } from '@angular/flex-layout/extended/style/style-transforms';
 
 @Component({
   selector: 'app-pessoa-form',
