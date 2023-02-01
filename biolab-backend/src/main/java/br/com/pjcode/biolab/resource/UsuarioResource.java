@@ -29,11 +29,13 @@ public class UsuarioResource {
 		this.usuarioService = usuarioService;
 		this.encoder = encoder;
 	}
-
+	
+	
 	@GetMapping("/usuarios")
 	public ResponseEntity<Object> getAll() {		
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll());		
 	}
+	
 	
 	@PostMapping("/usuario")
 	public ResponseEntity<Object> salvarUsuario(@RequestBody @Valid UsuarioDto usuarioDto) {
@@ -42,13 +44,13 @@ public class UsuarioResource {
 	}
 	
 	@GetMapping("/validarSenha")
-	public ResponseEntity<Object> validarSenha(@RequestParam String login, @RequestParam String password){
+	public ResponseEntity<Object> validarSenha(@RequestParam String login, @RequestParam String password) {
 		
 		//Recebe uma string com o login, chama o metodo que verifica se exeste esse login, se não existir retorna false.
 		if(usuarioService.findByLogin(login).isEmpty()) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
 		}
-		//Pegando usuario tendro do Optional e atribuindo a variável usuario.
+		//Pegando usuario dentro do Optional e atribuindo a variável usuario.
 		Usuario usuario = usuarioService.findByLogin(login).get();
 		
 		//Verificando se a senha informada e igual a encripitada que vem do banco.
@@ -58,7 +60,6 @@ public class UsuarioResource {
 		HttpStatus status = (valido)  ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
 		
         return ResponseEntity.status(status).body(valido);
-	}
-	
-
+        
+	}	
 }

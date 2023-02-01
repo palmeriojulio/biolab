@@ -14,12 +14,22 @@ import br.com.pjcode.biolab.domain.Usuario;
 @Component
 public class DetalheUsuarioServiceImpl implements UserDetailsService {
 	
+	/**
+	 * Injeção de dependência do repositório de usuario.
+	 */
 	private final UsuarioRepository usuarioRepository;
 
 	public DetalheUsuarioServiceImpl(UsuarioRepository usuarioRepository) {
 		this.usuarioRepository = usuarioRepository;
 	}
-
+	
+	/**
+	 * Esse método 
+	 * 
+	 * @param String
+	 * @return Um objeto Optional.
+	 * @exception Retrona mensagem de erro ou o objeto optional.
+	 */	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Optional<Usuario> usuario = usuarioRepository.findByLogin(username);

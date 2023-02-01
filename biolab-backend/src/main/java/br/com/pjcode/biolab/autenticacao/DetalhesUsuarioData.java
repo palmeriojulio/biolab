@@ -23,8 +23,11 @@ public class DetalhesUsuarioData implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return new ArrayList<>();
 	}
-
-	@Override
+	
+	/*
+	 * retrorna um usuário vazio ou a da consulta
+	 */
+	@Override 
 	public String getPassword() {
 		return usuario.orElse(new Usuario()).getPassword();
 	}
