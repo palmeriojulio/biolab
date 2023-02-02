@@ -1,0 +1,247 @@
+[
+	{
+		"nome": "Hemograma",
+		"tipo": "Hematologia",
+		"valor": 18.00
+	},
+	{
+		"nome": "Contagem de plaquetas ",
+		"tipo": "Hematologia",
+		"valor": 10.00
+	},
+	{
+		"nome": "Fator RH ",
+		"tipo": "Hematologia",
+		"valor": 0.00
+	},
+	{
+		"nome": "G. Sanguíneo (ABO)",
+		"tipo": "Hematologia",
+		"valor": 8.00
+	},
+	{
+		"nome": "Reticulócitos",
+		"tipo": "Hematologia",
+		"valor": 20.00
+	},
+	{
+		"nome": "TS",
+		"tipo": "Hematologia",
+		"valor": 5.00
+	},
+	{
+		"nome": "TC",
+		"tipo": "Hematologia",
+		"valor": 5.00
+	},
+	{
+		"nome": "TPAE",
+		"tipo": "Hematologia",
+		"valor": 30.00
+	},
+	{
+		"nome": "TTPA",
+		"tipo": "Hematologia",
+		"valor": 20.00
+	},
+	{
+		"nome": "VSH",
+		"tipo": "Hematologia",
+		"valor": 10.00
+	},
+	{
+		"nome": "Ácido Úrico",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "Albumina",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Amilase",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Bilirrubina Total e Frações",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Colesterol Total",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "Colesterol HDL",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "Colesterol VLDL",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "Colesterol LDL",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "Creatinina",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "Cloro",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "CPK",
+		"tipo": "Bioquímica",
+		"valor": 20.00
+	},
+	{
+		"nome": "CKMB",
+		"tipo": "Bioquímica",
+		"valor": 30.00
+	},
+	{
+		"nome": "TGO",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "TGP",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "DHL",
+		"tipo": "Bioquímica",
+		"valor": 20.00
+	},
+	{
+		"nome": "Fosfatase Alcalina",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Fósforo",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Glicose",
+		"tipo": "Bioquímica",
+		"valor": 7.00
+	},
+	{
+		"nome": "GPP",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "HBGL",
+		"tipo": "Bioquímica",
+		"valor": 20.00
+	},
+	{
+		"nome": "GGT",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Magnésio",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Proteínas Totais e Frações",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Potássio",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Sódio",
+		"tipo": "Bioquímica",
+		"valor": 10.00
+	},
+	{
+		"nome": "Triglicerídio",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "Uréia",
+		"tipo": "Bioquímica",
+		"valor": 8.00
+	},
+	{
+		"nome": "ASO/AEO",
+		"tipo": "Imunologia/Sorologias",
+		"valor": 10.00
+	},
+	{
+		"nome": "PCR",
+		"tipo": "Imunologia/Sorologias",
+		"valor": 10.00
+	},
+	{
+		"nome": "Latex/Fator reumatóide",
+		"tipo": "Imunologia/Sorologias",
+		"valor": 10.00
+	},
+	{
+		"nome": "VDRL",
+		"tipo": "Imunologia/Sorologias",
+		"valor": 10.00
+	},
+	{
+		"nome": "BHCG",
+		"tipo": "Imunologia/Sorologias",
+		"valor": 20.00
+	},
+	{
+		"nome": "HIV",
+		"tipo": "Imunologia/Sorologias",
+		"valor": 40.00
+	},
+	{
+		"nome": "HBSAG",
+		"tipo": "Imunologia/Sorologias",
+		"valor": 30.00
+	},
+	{
+		"nome": "Kato Katz",
+		"tipo": "Parasitologia",
+		"valor": 10.00
+	},
+	{
+		"nome": "Parasitológico de fezes",
+		"tipo": "Parasitologia",
+		"valor": 6.00
+	},
+	{
+		"nome": "Parasitológio de fezes 3X",
+		"tipo": "Parasitologia",
+		"valor": 18.00
+	},
+	{
+		"nome": "Pesquisa de sangue oculto",
+		"tipo": "Parasitologia",
+		"valor": 10.00
+	},
+	{
+		"nome": "Sumário de Urina",
+		"tipo": "Uroanálise",
+		"valor": 6.00
+	}
+]
