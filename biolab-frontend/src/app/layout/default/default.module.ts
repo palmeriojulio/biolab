@@ -32,8 +32,9 @@ import { PessoaComponent } from './../../modules/pessoa/pessoa.component';
 import { RequisicaoComponent } from './../../modules/requisicao/requisicao.component';
 import { DefaultComponent } from './default.component';
 import { RequisicaoListComponent } from '../../modules/requisicao-list/requisicao-list.component';
+import { LoginComponent } from '../../modules/login/login.component';
 import { CpfPipe } from '../../pipe/cpf.pipe';
-import { PhonePipe } from '../../pipe/phone.pipe';
+import { PhonePipe } from '../../pipe/phone.pipe'; 
 
 registerLocaleData(ptBr);
 
@@ -46,6 +47,7 @@ registerLocaleData(ptBr);
     PessoaComponent,
     PessoaFormComponent,
     RequisicaoListComponent,
+    LoginComponent,
     CpfPipe,
     PhonePipe
   ],

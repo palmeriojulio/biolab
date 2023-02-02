@@ -8,6 +8,7 @@ import { PessoaFormComponent } from './modules/pessoa-form/pessoa-form.component
 import { PessoaComponent } from './modules/pessoa/pessoa.component';
 import { RequisicaoListComponent } from './modules/requisicao-list/requisicao-list.component';
 import { RequisicaoComponent } from './modules/requisicao/requisicao.component';
+import { LoginComponent } from './modules/login/login.component';
 
 const routes: Routes = [{
   path: '',
@@ -30,6 +31,9 @@ const routes: Routes = [{
   }, {
     path: 'requisicao-list',
     component: RequisicaoListComponent
+  },{
+    path: 'login',
+    component: LoginComponent
   }]
 }];
 
