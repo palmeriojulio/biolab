@@ -1,26 +1,27 @@
 <mat-card>
-    <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
-      </mat-card-header>
+    <div class="title-login">
+      <h1>Login</h1>
+    </div>          
+    <br>
     <form class="form-login">
       <div mat-dialog-content>
         <mat-form-field appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input matInput placeholder="Digite o nome do exame"/>
+          <mat-label>Digite seu login</mat-label>
+          <input matInput placeholder="Digite seu login"/>
         </mat-form-field>           
         <mat-form-field appearance="outline">
-            <mat-label>Nome</mat-label>
-            <input matInput placeholder="Digite o nome do exame"/>
+            <mat-label>Digite sua senha</mat-label>
+            <input matInput placeholder="Digite sua senha"/>
           </mat-form-field>          
       </div>
     </form>
-    <div mat-dialog-actions [align]="'start'">      
-      <button mat-raised-button style="margin-left: 8px" class="background-color">
-       Entrar
-      </button>
-    </div>
-  
-  </mat-card>
+    <div>      
+      <button mat-raised-button color="primary" style="width: 100%; height: 50px;">
+        <mat-icon>login</mat-icon>
+        Login</button>
+    </div>  
+    <br>
+</mat-card>
   
   
 

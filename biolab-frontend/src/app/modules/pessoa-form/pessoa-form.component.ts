@@ -62,7 +62,7 @@ export class PessoaFormComponent implements OnInit {
       this.pessoaService.salvarPessoa(this.formPessoa.value).subscribe((res: any) => {
         if (res != null) {
           this.limpaForm();
-          this.open('Cliente salva com sucesso!', 'X');
+          this.open('Cliente salvo com sucesso!', 'X');
         } else {
           this.limpaForm();
           this.open('Erro ao salvar o cliente!', 'X');

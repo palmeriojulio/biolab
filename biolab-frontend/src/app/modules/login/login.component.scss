@@ -4,7 +4,17 @@ mat-card {
     
 }
 
-mat-dialog-content {
+mat-form-field {
     display: flex;
     flex-direction: column;
 }
+
+mat-raised-button {
+    width: 100%;
+}
+
+.title-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
