@@ -11,12 +11,18 @@
  - Calcular valor dos exames selecionados.
  - Impressão da solicitação em duas vias.
  
+<p align="center">
+  <img src="biolab-frontend/src/assets/login.jpg" />
+</p>
+ 
 ## Tecnologias
-- Java
-- Spring boot framework
-  - Spring validation
-  - Spring Web   
-- JPA
+- Java 8
+- Spring Framework
+  - Spring Boot
+  - Spring Validation
+  - Spring Web
+  - Spring Data Jpa
+  - Spring Security
 - Postgresql
 - Lombok
 
