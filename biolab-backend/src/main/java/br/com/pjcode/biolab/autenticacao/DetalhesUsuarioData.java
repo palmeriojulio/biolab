@@ -25,7 +25,7 @@ public class DetalhesUsuarioData implements UserDetails {
 	}
 	
 	/*
-	 * retrorna um usuário vazio ou a da consulta
+	 * retrorna um usuário vazio ou o da consulta
 	 */
 	@Override 
 	public String getPassword() {
