@@ -59,7 +59,7 @@ public class UsuarioResource {
 		//Se a senha for válida, status recebe ok se não recebe UNAUTHORIZED.
 		HttpStatus status = (valido)  ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
 		
-        return ResponseEntity.status(status).body(valido);
+        return ResponseEntity.status(status).body(usuario);
         
 	}	
 }
