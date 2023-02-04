@@ -3,22 +3,22 @@
       <h1>Login</h1>
     </div>          
     <br>
-    <form class="form-login">
+    <form class="form-login" [formGroup]="formLogin">
       <div mat-dialog-content>
         <mat-form-field appearance="outline">
           <mat-label>Digite seu login</mat-label>
-          <input matInput placeholder="Digite seu login"/>
+          <input matInput placeholder="Digite seu login" formControlName="login"/>
           <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>           
         <mat-form-field appearance="outline">
           <mat-label>Digite sua senha</mat-label>
-          <input matInput placeholder="Digite sua senha"/>
+          <input matInput placeholder="Digite sua senha" formControlName="password"/>
           <mat-icon matSuffix>key</mat-icon>
         </mat-form-field>          
       </div>
     </form>
     <div>      
-      <button mat-raised-button color="primary" style="width: 100%; height: 50px;">
+      <button mat-raised-button color="primary" style="width: 100%; height: 50px;" (click)="realizarLogin()">
         <mat-icon>login</mat-icon>
         Login</button>
     </div>  
