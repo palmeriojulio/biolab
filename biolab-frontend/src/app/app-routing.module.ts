@@ -10,32 +10,30 @@ import { RequisicaoListComponent } from './modules/requisicao-list/requisicao-li
 import { RequisicaoComponent } from './modules/requisicao/requisicao.component';
 import { LoginComponent } from './modules/login/login.component';
 
-const routes: Routes = [{
-  path: '',
-  component: DefaultComponent,
-  children: [{
-    path: 'requisicao',
-    component: RequisicaoComponent
-  }, {
-    path: 'exame',
-    component: ExameComponent
-  }, {
-    path: 'exame-form',
-    component: ExameFormComponent
-  }, {
-    path: 'pessoa',
-    component: PessoaComponent
-  }, {
-    path: 'pessoa-form',
-    component: PessoaFormComponent
-  }, {
-    path: 'requisicao-list',
-    component: RequisicaoListComponent
-  },{
-    path: 'login',
-    component: LoginComponent
-  }]
-}];
+const routes: Routes = [
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'principal', component: DefaultComponent,
+    children: [{
+      path: 'requisicao',
+      component: RequisicaoComponent
+    }, {
+      path: 'exame',
+      component: ExameComponent
+    }, {
+      path: 'exame-form',
+      component: ExameFormComponent
+    }, {
+      path: 'pessoa',
+      component: PessoaComponent
+    }, {
+      path: 'pessoa-form',
+      component: PessoaFormComponent
+    }, {
+      path: 'requisicao-list',
+      component: RequisicaoListComponent
+    }]},
+    {path: 'login',component: LoginComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
