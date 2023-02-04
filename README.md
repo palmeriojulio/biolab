@@ -10,9 +10,15 @@
  - Gerar solicitação de exames.
  - Calcular valor dos exames selecionados.
  - Impressão da solicitação em duas vias.
+
+ 
  
 <p align="center">
   <img src="biolab-frontend/src/assets/login.jpg" />
+</p>
+<br>
+<p>
+  <img src="biolab-frontend/src/assets/exames.jpg" />
 </p>
  
 ## Tecnologias - back-end
