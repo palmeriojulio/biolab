@@ -119,7 +119,7 @@ export class RequisicaoComponent implements OnInit {
           this._initRequisicao();
           this.visibleForm = false;
         }
-        this.router.navigate(['/requisicao-list']);
+        this.router.navigate(['/principal/requisicao-list']);
       });
     }
   }
