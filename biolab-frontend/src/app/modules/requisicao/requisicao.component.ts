@@ -70,7 +70,9 @@ export class RequisicaoComponent implements OnInit {
 
   createFormPesq(req: Requisicao) {
     this.formPesq = new FormGroup({
-      cpf: new FormControl(req.pessoa?.cpf)
+      cpf: new FormControl(req.pessoa?.cpf),
+      nome: new FormControl(req.pessoa?.nome),
+      dataNascimento: new FormControl(req.pessoa?.dataNascimento)
     })
   }
 
@@ -99,8 +101,17 @@ export class RequisicaoComponent implements OnInit {
           this.visibleForm = true;
         }
       })
+    } if (this.formPesq.value.nome) {
+      this.pessoaService.pesquisarClientePorNome(this.formPesq.value.nome).subscribe((res: any) => {
+        if(res == null) {
+          this.open("Cliente não está cadatrado!", "X");
+        }else {
+          this.pessoa = res;
+          this.visibleForm = true;
+        }
+      })
     } else {
-      this.open("Campo CPF vazio!", "X")
+      this.open("Campo CPF, Nome ou Data vazio!", "X")
     }
   }
 

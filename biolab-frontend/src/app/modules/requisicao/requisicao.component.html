@@ -4,18 +4,27 @@
     <span> Iniciar requisição</span>
   </mat-toolbar>
   <br />
-  <span>Inicie uma requisição pesquisando pelo cpf do paciente.</span>
+  <span>Inicie uma requisição pesquisando pelo paciente.</span>
   <mat-card-content>   
     <br />
-    <form [formGroup]="formPesq">
+    <!-- <form [formGroup]="formPesq">
       <mat-form-field appearance="outline">
-        <mat-label>Pesquisar paciente</mat-label>
+        <mat-label>CPF</mat-label>
         <input matInput placeholder="Digite o CPF" formControlName="cpf" mask="000.000.000-00" />
       </mat-form-field>
-      <button mat-icon-button (click)="pesquisar()">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Digite o Nome" formControlName="nome"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput placeholder="Digite data" formControlName="dataNascicmento"/>
+      </mat-form-field> 
+      <button mat-raised-button class="background-color" style="height: 50px;" (click)="pesquisar()">
         <mat-icon>search</mat-icon>
-      </button>
-    </form>
+        Pesquisar
+      </button> 
+    </form>-->
     <mat-divider></mat-divider>
   </mat-card-content>
   <mat-card-content *ngIf="visibleForm">
