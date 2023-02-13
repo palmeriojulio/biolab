@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   value = 50;
   buffer = 50;
   show = false;
-  usuario = Login
+  usuario = Login;
 
   formLogin!: FormGroup;
 
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
   }
 
   public redirecionarPrincipal(usuario: any) {
-    localStorage.setItem('usuario', usuario);
+    localStorage.setItem('usuario', usuario.login);
     this.router.navigate(['/principal']);
   }
 

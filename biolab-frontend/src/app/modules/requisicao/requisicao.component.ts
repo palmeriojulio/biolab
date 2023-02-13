@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
@@ -7,7 +7,7 @@ import { Pessoa } from 'src/app/models/pessoa-model';
 import { Requisicao } from 'src/app/models/requisicao-model';
 import { ExameService } from 'src/app/services/exame.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 import { Exame } from './../../models/exame-model';
 import { RequisicaoService } from './../../services/requisicao.service';
@@ -33,19 +33,21 @@ export class RequisicaoComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   fator: string = '';
   examesSelecionados?: Exame[] = [];
-  route!: Router;
+
+  @Input() recebeRequisicao: any;
 
   constructor(
     private requisicaoService: RequisicaoService,
     private pessoaService: PessoaService,
     private exameService: ExameService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog,
     private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this._initRequisicao();
+    console.table(this.recebeRequisicao);
   }
 
   _initRequisicao() {
@@ -101,11 +103,12 @@ export class RequisicaoComponent implements OnInit {
           this.visibleForm = true;
         }
       })
-    } if (this.formPesq.value.nome) {
+    } else if (this.formPesq.value.nome) {
       this.pessoaService.pesquisarClientePorNome(this.formPesq.value.nome).subscribe((res: any) => {
-        if(res == null) {
+        console.log(res)
+        if (res == null) {
           this.open("Cliente não está cadatrado!", "X");
-        }else {
+        } else {
           this.pessoa = res;
           this.visibleForm = true;
         }
@@ -134,8 +137,6 @@ export class RequisicaoComponent implements OnInit {
       });
     }
   }
-
-
 
   // Retornar mensagem depois de salvar
   open(message: string, action: string,) {

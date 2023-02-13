@@ -52,6 +52,16 @@ public class PessoaService {
 		}
 	}
 	
+	public PessoaDto findByNome(String nome) {
+		try {
+			var pessoa = pessoaRepository.findByNome(nome);
+			return convertReturn(pessoa);			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public PessoaDto update(PessoaDto dto) {
 		try {
 			var pessoa = pessoaRepository.save(PessoaDto.toPessoa(dto));
@@ -105,9 +115,6 @@ public class PessoaService {
 			e.printStackTrace();
 			return null;
 		}
-	}
-	
-	
-	
+	}	
 
 }

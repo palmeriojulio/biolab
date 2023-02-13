@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,9 +20,11 @@ export class PessoaComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   dataSource!: MatTableDataSource<Pessoa>;
-  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'editar', 'excluir', 'requisicao']
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'editar', 'excluir','requisicao']
   pessoa!: Pessoa;
   durationInSeconds = 5;
+
+  @Output() itemSelected = new EventEmitter<any>()
 
   constructor(
     private pessoaService: PessoaService,
@@ -33,6 +35,11 @@ export class PessoaComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarPessoas();
+  }
+
+  enviar(objeto: any){
+    this.itemSelected.emit(objeto);
+    this.router.navigate(['/principal/requisicao']);
   }
 
   listarPessoas() {
@@ -63,8 +70,8 @@ export class PessoaComponent implements OnInit {
     }
   }
 
-  requisicao(pessoa: any) {
-    this.router.navigate(['/principal/requisicao'], pessoa);
+  requisicao(objeto: any) {
+    this.router.navigate(['/principal/requisicao'], {state: objeto});
   }
 
   openDialog(pessoa: Pessoa) {
