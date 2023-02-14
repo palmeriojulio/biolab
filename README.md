@@ -50,6 +50,7 @@ $ git clone <https://github.com/palmeriojulio/biolab.git>
 
 No front-end:
 
+- Instale o node.js
 - Instale NPM packages
 
 $ npm install
